@@ -15,7 +15,8 @@ class Video extends Model
     private $category;
     private $reviews;
     private $available_to_watch;
-    private $created_by;
+    private $suitable_for_kids;
+    private $created_by;    
 
     public function review_video(){
 
