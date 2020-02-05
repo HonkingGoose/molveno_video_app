@@ -6,11 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Video extends Model
 {
-    //
-}
-
-Class Videotest extends Model
-{
     protected $table = "videos";
 
     private $id;
