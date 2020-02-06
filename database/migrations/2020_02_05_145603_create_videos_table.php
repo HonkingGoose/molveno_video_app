@@ -16,14 +16,14 @@ class CreateVideosTable extends Migration
         Schema::create('videos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
-            $table->string('youtube_uid', 21844)->unique();
-            $table->string('title', 21844);
-            $table->string('description', 21844);
-            $table->string('category', 21844);
+            $table->string('youtube_uid')->unique();
+            $table->string('title');
+            $table->string('description');
+            $table->string('category');
             $table->smallInteger('reviews');
             $table->boolean('available_to_watch');
             $table->boolean('suitable_for_kids');
-            $table->string('created_by', 21844);
+            $table->string('created_by');
         });
     }
 

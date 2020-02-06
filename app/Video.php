@@ -16,25 +16,25 @@ class Video extends Model
     private $reviews;
     private $available_to_watch;
     private $suitable_for_kids;
-    private $created_by;    
+    private $created_by;
 
-    public function review_video(){
+    public function reviewVideo(){
 
     };
     
-    public function upload_by_employee(){
+    public function uploadByEmployee(){
 
     };
 
-    public function upload_video_by_guest(){
+    public function uploadVideoByGuest(){
 
     };
 
-    public function update_video(){
+    public function updateVideo(){
 
     };
 
-    public function delete_video(){
+    public function deleteVideo(){
 
     };
 
