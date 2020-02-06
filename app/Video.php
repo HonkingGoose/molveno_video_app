@@ -18,27 +18,27 @@ class Video extends Model
     private $suitable_for_kids;
     private $created_by;
 
-    public function reviewVideo(){
-
-    };
+    public function reviewVideo()
+    {
+    }
     
-    public function uploadByEmployee(){
+    public function uploadByEmployee()
+    {
+    }
 
-    };
+    public function uploadVideoByGuest()
+    {
+    }
 
-    public function uploadVideoByGuest(){
+    public function updateVideo()
+    {
+    }
 
-    };
+    public function deleteVideo()
+    {
+    }
 
-    public function updateVideo(){
-
-    };
-
-    public function deleteVideo(){
-
-    };
-
-    public function getAveragerating(){
-
-    };
-};
+    public function getAveragerating()
+    {
+    }
+}
