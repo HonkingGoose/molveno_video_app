@@ -41,4 +41,9 @@ class Video extends Model
     public function getAveragerating()
     {
     }
+
+    public function getTitle() 
+    {
+        return $this->title;
+    }
 }
