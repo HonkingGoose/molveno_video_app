@@ -38,7 +38,7 @@ class Video extends Model
     {
     }
 
-    public function getAveragerating()
+    public function getAverageRating()
     {
     }
 
