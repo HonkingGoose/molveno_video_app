@@ -42,23 +42,4 @@ class Video extends Model
     {
     }
 
-    public function getTitle()
-    {
-        return $this->title;
-    }
-
-    public function getDescription()
-    {
-        return $this->description;
-    }
-
-    public function getCategory()
-    {
-        return $this->category;
-    }
-
-    public function getReviews()
-    {
-        return $this->reviews;
-    }
 }
