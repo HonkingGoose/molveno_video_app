@@ -30,14 +30,6 @@ class Video extends Model
     {
     }
 
-    public function updateVideo()
-    {
-    }
-
-    public function deleteVideo()
-    {
-    }
-
     public function getAverageRating()
     {
     }
