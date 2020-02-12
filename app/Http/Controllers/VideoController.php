@@ -13,7 +13,7 @@ class VideoController extends Controller
      */
     public function index()
     {
-        //
+        return view('video.index', ['video' => Video::all()]);
     }
 
     /**
@@ -45,7 +45,7 @@ class VideoController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('video.show', ['video' => Video::findOrFail($id)]);
     }
 
     /**
