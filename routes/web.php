@@ -11,16 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/videos', function() {
-    return view('videos');
-});
-
-
+// Guest routes
 Route::get('/guest', 'GuestController@index')->name('guest.index');
+
+
+// Video routes
 Route::get('/video', 'VideoController@index');
 Route::get('/video/{video}', 'VideoController@show');
 
