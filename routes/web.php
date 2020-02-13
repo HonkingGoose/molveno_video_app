@@ -20,7 +20,7 @@ Route::get('/videos', function() {
 });
 
 
-Route::get('/guests', 'GuestController@index')->name('guests.index');
+Route::get('/guest', 'GuestController@index')->name('guest.index');
 Route::get('/video', 'VideoController@index');
 Route::get('/video/{video}', 'VideoController@show');
 

@@ -6,9 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-
-    <h1>Lists of guests</h1>
-
-    
+    <h1>Lists of guests</h1> 
 </body>
 </html>
