@@ -25,3 +25,7 @@ Execute the following commands:
 ## How to start the server:
 
 `php artisan serve` opens a local development server at http://localhost:8000
+
+## If you get errors:
+
+1. Try `composer dump-autoload` to load the classes of directories outside of `/app`.
