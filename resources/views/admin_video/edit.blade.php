@@ -9,9 +9,10 @@
 
 @section('content')
     <div>
-        <h2>Create video</h2>
+        <h2>Edit video</h2>
         <form method="POST">
             @csrf
+            @method('PUT')
 
             @if ($errors->any())
             <div class="alert alert-danger">
@@ -24,32 +25,32 @@
             @endif
 
             <label for="title">Title:</label>
-                <input id="title" type="text" name="title">
+        <input id="title" type="text" name="title" value="{{ $video->title }}">
                 <br>
             <label for="description">Description:</label>
-                <input id="description" type="text" name="description">
+                <input id="description" type="text" name="description" value="{{ $video->description }}">
                 <br>
 
                 <label for="category-select">Choose a category:</label>
                     <select name="category" id="category-select">
                         <option value="">--Please choose an option--</option>
                         @foreach ($categories as $category)
-                        <option value="{{ $category }}">{{ $category }}</option>
+                        <option value="{{ $category }}" @if ($category === $video->category)selected @endif>{{ $category }}</option>
                         @endforeach
                     </select>
                 <br>
             <label for="youtube_uid">YouTube UID:</label>
-                <input id="youtube_uid" type="text" name="youtube_uid">
+                <input id="youtube_uid" type="text" name="youtube_uid" value="{{ $video->youtube_uid }}">
                 <br>
             <label for="suitableKids">Video is suitable for kids:</label>
-                <input type="checkbox" id="suitableKids" name="suitableKids">
+                <input type="checkbox" id="suitableKids" name="suitableKids" @if ($video->suitable_for_kids) checked @endif>
                 <br>
 
             <label for="available_to_watch">Video is available to watch:</label>
-                <input type="checkbox" id="available_to_watch" name="available_to_watch">
+                <input type="checkbox" id="available_to_watch" name="available_to_watch"  @if ($video->available_to_watch) checked @endif>
                 <br>
 
-            <button class="btn btn-primary">Create video</button>
+            <button class="btn btn-primary">Update video</button>
         </form>
     </div>
 @endsection

@@ -11,11 +11,13 @@ $factory->define(App\Video::class, function (Faker $faker) {
         'FcG25skqziM',
         '5k2UhoYF1qo'
     ];
+    $categories = ['cat1', 'cat2', 'cat3'];
+
     return [
         'youtube_uid' => $uids[$faker->numberBetween($min = 0, $max = 2)],
         'title' => $faker->sentence($nbWords = 5, $variableNbWords = true),
         'description' => $faker->sentence($nbWords = 10, $variableNbWords = true),
-        'category' => $faker->word,
+        'category' => $categories[$faker->numberBetween($min = 0, $max = 2)],
         'reviews' => $faker->numberBetween($min = 0, $max = 5),
         'available_to_watch' => $faker->numberBetween($min = 0, $max = 1),
         'suitable_for_kids' => $faker->numberBetween($min = 0, $max = 1),

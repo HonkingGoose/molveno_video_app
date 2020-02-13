@@ -19,10 +19,15 @@ Route::prefix('admin')->group(function() {
 
      Route::get('guest', 'GuestController@index')->name('guest.index');
 
-     Route::get('video', 'VideoController@index');
+     Route::get('video', 'VideoController@index')->name('video.index');
      Route::get('video/create', 'VideoController@create');
+
      Route::get('video/{video}', 'VideoController@show');
      Route::post('video/{video}', 'VideoController@store');
+
+     Route::get('video/{video}/edit', 'VideoController@edit');
+     Route::put('video/{video}/edit', 'VideoController@update');
+
 });
 
 // Guest routes
