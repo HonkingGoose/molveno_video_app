@@ -1,6 +1,6 @@
 @extends('layout.app')
 
-@section('title', 'Page Title')
+@section('title', $video->title)
 
 @section('sidebar')
     @parent
