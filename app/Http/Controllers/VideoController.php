@@ -24,7 +24,9 @@ class VideoController extends Controller
      */
     public function create()
     {
-        //
+        $categories = ['cat1', 'cat2', 'cat3'];
+        // Category::all();
+        return view('admin_video.create', ['video' => Video::all(), 'categories' => $categories]);
     }
 
     /**
