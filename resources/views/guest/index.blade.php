@@ -8,5 +8,13 @@
 @endsection
 
 @section('content')
-    <div></div>
+<h2>List of Guests</h2>
+<div>
+    @foreach ($guest as $guest)
+        <p>
+            {{ $guest->firstName }}
+            {{ $guest->lastName }}
+        </p>
+    @endforeach
+</div>
 @endsection
