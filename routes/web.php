@@ -11,12 +11,26 @@
 |
 */
 
+// Admin routes
+Route::prefix('admin')->group(function(){
+     Route::get('/', function() {
+        echo "Admin homepage";
+     });
+
+     Route::get('guest', 'GuestController@index')->name('guest.index');
+
+     Route::get('video', 'VideoController@index');
+     Route::get('video/{video}', 'VideoController@show');
+
+     Route::get('video/create', 'VideoController@create');
+     Route::post('video/{video}', 'VideoController@store');
+});
+
 // Guest routes
-Route::get('/guest', 'GuestController@index')->name('guest.index');
+Route::get('/', function() {
+    echo "Guest landing page";
+    foreach (App\Video::all() as $video) {
+        echo $video->title;
+    }
+});
 
-
-// Video routes
-Route::get('/video', 'VideoController@index');
-Route::get('/video/{video}', 'VideoController@show');
-
-Route::post('/video/{video}', 'VideoController@store');
