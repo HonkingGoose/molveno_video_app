@@ -3,6 +3,12 @@
 This app uses the Laravel framework.
 You do not need to have Laravel installed globally.
 
+## About the docker files:
+
+**WARNING: Do not use the docker files yet, this is work in progress and needs to be validated and checked!**
+
+This repo is currently being changed so that we can use Docker. However this work is not done yet, **do not use any docker commands on this repo!**
+
 ## Prerequisites:
 
 - XAMPP is installed.
