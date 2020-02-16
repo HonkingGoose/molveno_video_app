@@ -14,7 +14,8 @@ RUN apt-get update && apt-get install -y \
     libreadline-dev \    
     sudo \
     unzip \
-    zip
+    zip \
+&& rm -rf /var/lib/apt/lists/*
 
 # 2. apache configs + document root
 RUN echo "ServerName laravel-app.local" >> /etc/apache2/apache2.conf
