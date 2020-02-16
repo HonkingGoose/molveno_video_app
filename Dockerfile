@@ -4,19 +4,19 @@ RUN apt-get update
 
 # 1. development packages
 RUN apt-get install -y \
-    git \
-    zip \
     curl \
-    sudo \
-    unzip \
-    libicu-dev \
+    g++ \
+    git \
     libbz2-dev \
-    libpng-dev \
+    libfreetype6-dev \
+    libicu-dev \
     libjpeg-dev \
     libmcrypt-dev \
-    libreadline-dev \
-    libfreetype6-dev \
-    g++
+    libpng-dev \    
+    libreadline-dev \    
+    sudo \
+    unzip \
+    zip
 
 # 2. apache configs + document root
 RUN echo "ServerName laravel-app.local" >> /etc/apache2/apache2.conf
@@ -32,13 +32,13 @@ RUN a2enmod rewrite headers
 RUN mv "$PHP_INI_DIR/php.ini-development" "$PHP_INI_DIR/php.ini"
 
 RUN docker-php-ext-install \
-    bz2 \
-    intl \
-    iconv \
     bcmath \
-    opcache \
+    bz2 \
     calendar \
+    iconv \
+    intl \
     mbstring \
+    opcache \
     pdo_mysql \
     zip
 
