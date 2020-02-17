@@ -22,7 +22,7 @@ Route::prefix('admin')->group(function() {
      Route::get('video', 'VideoController@index')->name('video.index');
      Route::get('video/create', 'VideoController@create');
 
-     Route::get('video/{video}', 'VideoController@show');
+    
      Route::post('video/{video}', 'VideoController@store');
 
      Route::get('video/{video}/edit', 'VideoController@edit');
@@ -38,3 +38,4 @@ Route::get('/', function() {
     }
 });
 
+Route::get('watch_video/{video}', 'VideoController@show');
