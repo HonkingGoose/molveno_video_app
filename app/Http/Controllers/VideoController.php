@@ -14,7 +14,7 @@ class VideoController extends Controller
      */
     public function index()
     {
-        return view('video.index', ['video' => Video::all()]);
+        return view('admin_video.index', ['video' => Video::all()]);
     }
 
     /**
@@ -47,7 +47,7 @@ class VideoController extends Controller
         $video->created_by = "flappie het konijn";
 
         if ($video->save()) {
-            return redirect()->route('video.index');
+            return redirect()->route('admin_video.index');
         } else {
             var_dump("Not stored.");
         }
@@ -107,8 +107,12 @@ class VideoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Video $video)
     {
-        //
+        if ($video->delete()) {
+            return redirect()->route('video.index');
+        } else {
+            echo "fout bij verwijderen dier";
+        }
     }
 }

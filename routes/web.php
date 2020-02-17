@@ -14,18 +14,19 @@
 // Admin routes
 Route::prefix('admin')->group(function() {
      Route::get('/', function() {
-        echo "Admin homepage";
+       return view('layout.admin');
      });
 
      Route::get('guest', 'GuestController@index')->name('guest.index');
+     Route::get('video', 'VideoController@index')->name('admin_video.index');
 
-     Route::get('video', 'VideoController@index')->name('video.index');
-     Route::get('video/create', 'VideoController@create');
 
-    
+     Route::get('video/create', 'VideoController@create')->name('admin_video.create');
      Route::post('video/{video}', 'VideoController@store');
 
-     Route::get('video/{video}/edit', 'VideoController@edit');
+     Route::get('/video/{video}/delete', 'VideoController@delete')->name('admin_video.delete');
+
+     Route::get('video/{video}/edit', 'VideoController@edit')->name('admin_video.edit');
      Route::put('video/{video}/edit', 'VideoController@update');
 
 });

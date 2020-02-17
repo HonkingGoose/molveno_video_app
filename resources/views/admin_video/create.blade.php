@@ -1,6 +1,6 @@
 @extends('layout.admin')
 
-@section('title', 'Video admin')
+@section('title', 'Video admin-create video')
 
 @section('sidebar')
     @parent
