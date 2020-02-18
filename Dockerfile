@@ -10,11 +10,13 @@ RUN apt-get update && apt-get install -y \
     libicu-dev \
     libjpeg-dev \
     libmcrypt-dev \
-    libpng-dev \    
-    libreadline-dev \    
+    libpng-dev \
+    libreadline-dev \
     sudo \
     unzip \
     zip \
+    libonig-dev \
+    libzip-dev \
 && rm -rf /var/lib/apt/lists/*
 
 # 2. Apache configs + document root
@@ -51,4 +53,4 @@ ARG uid
 RUN useradd -G www-data,root -u $uid -d /home/devuser devuser
 RUN mkdir -p /home/devuser/.composer && \
     chown -R devuser:devuser /home/devuser
-    
+
