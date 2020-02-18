@@ -5,20 +5,40 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-
+        <link rel="stylesheet" type="text/css"  href="style.css">
         <title>Molveno Lake Resort Video Admin App @yield('title')</title>
     </head>
     <body>
-        <h1>Molveno Lake Resort Video Admin App</h1>
 
+        <div id="app">
+            <header>
+                <h1>Video Admin application Molveno</h1>
+            </header>
 
-        @section('sidebar')
-            This is the master sidebar.
-        @show
+            <aside id="left">
+                left
+            </aside>
 
-        <div class="container">
-            @yield('content')
+            <main>
+                <nav class="navbar navbar-dark bg-dark justify-content-start">
+                    <a class="navbar-brand" href="/"><i class="fas fa-video"></i></a>
+                    <ul class="navbar-nav">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/video">Index of Videos</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                @yield('content')
+            </main>
+
+            <aside id="right">
+                right
+            </aside>
+
+            <footer>footer</footer>
         </div>
+
     </body>
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>

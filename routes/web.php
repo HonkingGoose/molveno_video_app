@@ -11,25 +11,32 @@
 |
 */
 
-// Admin routes
-Route::prefix('admin')->group(function() {
-     Route::get('/', function() {
-       return view('layout.admin');
-     });
+// Admin Routes
 
-     Route::get('guest', 'GuestController@index')->name('guest.index');
-     Route::get('video', 'VideoController@index')->name('admin_video.index');
+Route::resource('video', 'VideoController');
 
 
-     Route::get('video/create', 'VideoController@create')->name('admin_video.create');
-     Route::post('video/{video}', 'VideoController@store');
+// Route::prefix('admin')->group(function() {
+//      Route::get('/', function() {
+//        return view('layout.admin');
+//      });
 
-     Route::get('/video/{video}/delete', 'VideoController@delete')->name('admin_video.delete');
+//      Route::get('guest', 'GuestController@index')->name('guest.index');
+//      Route::get('video/{video}', 'VideoController@show')->name('admin_video.show');
+//      Route::get('video', 'VideoController@index')->name('admin_video.index');
 
-     Route::get('video/{video}/edit', 'VideoController@edit')->name('admin_video.edit');
-     Route::put('video/{video}/edit', 'VideoController@update');
 
-});
+//      Route::get('video/create', 'VideoController@create')->name('admin_video.create');
+//      Route::post('video/{video}', 'VideoController@store');
+
+//      Route::get('/video/{video}/delete', 'VideoController@delete')->name('admin_video.delete');
+
+//      Route::get('video/{video}/edit', 'VideoController@edit')->name('admin_video.edit');
+//      Route::put('video/{video}/edit', 'VideoController@update');
+
+// });
+
+
 
 // Guest routes
 Route::get('/', function() {

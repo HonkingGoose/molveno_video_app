@@ -1,0 +1,39 @@
+body {
+    background-color: #c2c8ce;
+}
+
+#app {
+    display: grid;
+    grid-template-areas:
+        "header header header"
+        "left main right"
+        "footer footer footer";
+    grid-template-columns: 75px 1fr 75px;
+    grid-template-rows: auto 1fr auto;
+    /* grid-gap: 10px; */
+    height: 100vh;
+}
+
+header {
+    grid-area: header;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#left {
+    grid-area: left;
+    margin-right: 0.5rem;
+}
+main {
+    grid-area: main;
+}
+
+#right {
+    grid-area: right;
+    margin-right: 0.5rem;
+}
+
+footer {
+    grid-area: footer;
+}

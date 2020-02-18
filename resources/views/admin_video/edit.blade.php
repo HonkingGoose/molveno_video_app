@@ -1,11 +1,5 @@
 @extends('layout.admin')
 
-@section('title', 'Video admin-edit video')
-
-@section('sidebar')
-    @parent
-    <p>This is appended to the master sidebar.</p>
-@endsection
 
 @section('content')
     <div>
@@ -24,33 +18,63 @@
             </div>
             @endif
 
-            <label for="title">Title:</label>
-        <input id="title" type="text" name="title" value="{{ $video->title }}">
-                <br>
-            <label for="description">Description:</label>
-                <input id="description" type="text" name="description" value="{{ $video->description }}">
-                <br>
 
-                <label for="category-select">Choose a category:</label>
-                    <select name="category" id="category-select">
-                        <option value="">--Please choose an option--</option>
-                        @foreach ($categories as $category)
-                        <option value="{{ $category }}" @if ($category === $video->category)selected @endif>{{ $category }}</option>
-                        @endforeach
-                    </select>
-                <br>
-            <label for="youtube_uid">YouTube UID:</label>
-                <input id="youtube_uid" type="text" name="youtube_uid" value="{{ $video->youtube_uid }}">
-                <br>
-            <label for="suitableKids">Video is suitable for kids:</label>
-                <input type="checkbox" id="suitableKids" name="suitableKids" @if ($video->suitable_for_kids) checked @endif>
-                <br>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="title">Title:</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" id="title" type="text" name="title" value="{{ $video->title }}">
+                    </div>
+            </div>
 
-            <label for="available_to_watch">Video is available to watch:</label>
-                <input type="checkbox" id="available_to_watch" name="available_to_watch"  @if ($video->available_to_watch) checked @endif>
-                <br>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="description">Description:</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" id="description" type="text" name="description" value="{{ $video->description }}">
+                    </div>
+            </div>
 
-            <button class="btn btn-primary">Update video</button>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="category-select">Choose a category:</label>
+                    <div class="col-sm-10">
+                        <select multiple class="form-control" name="category" id="category-select" multiple>
+                            <option value="">--Please choose an option--</option>
+                            @foreach ($categories as $category)
+                            <option value="{{ $category }}" @if ($category === $video->category)selected @endif>{{ $category }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="youtube_uid">Youtube UID:</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" id="youtube_uid" type="text" name="youtube_uid" value="{{ $video->youtube_uid }}">
+                    </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <div class="checkbox">
+                        <label for="suitableKids"><input type="checkbox" id="suitableKids" name="suitableKids" @if ($video->suitable_for_kids) checked @endif>Video is suitable for kids:</label>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <div class="checkbox">
+                        <label for="available_to_watch"><input type="checkbox" id="available_to_watch" name="available_to_watch"  @if ($video->available_to_watch) checked @endif>Video is available to watch</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default">Update video</button>
+                </div>
+            </div>
+
         </form>
     </div>
 @endsection
