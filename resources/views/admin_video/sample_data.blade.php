@@ -16,6 +16,7 @@
 <body>
     <div class="container-fluid">
         <br />
+        <button onclick="window.history.back()">Back to central admin home page</button>
         <h1 align="center">Video App Administration Molveno</h1>
         <br />
         <div align="right">
@@ -33,7 +34,7 @@
                         <th width="5%">Description</th>
                         <th width="5%">Category</th>
                         <th width="5%">Reviews</th>
-                        <th width="5%">Available Video?</th>
+                        <th width="5%">Video Available?</th>
                         <th width="5%">Suitable for Kids?</th>
                         <th width="5%">Created by</th>
                         <th width="5%">Action</th>
@@ -140,15 +141,6 @@
         </div>
     </div>
 </div>
-
-
-
-
-
-
-
-
-
 
 
 <script>
@@ -315,18 +307,7 @@ let user_id;
 
 });
 
-
-
-
-
-
 </script>
-
-
-
-
-
-
 
 </body>
 </html>

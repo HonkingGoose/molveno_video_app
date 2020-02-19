@@ -1,12 +1,12 @@
-@extends('layout.app')
+@extends('layout.admin')
+
+@push('styles')
+    <link href="{{ asset('css/admin_layout.css') }}" rel="stylesheet">
+@endpush
 
 @section('title', 'List of guests')
 
-@section('sidebar')
-    @parent
-    <p>This is appended to the master sidebar.</p>
-@endsection
-
+@section('helloOne')
 @section('content')
 <h2>List of Guests</h2>
 <div>
@@ -17,4 +17,6 @@
         </p>
     @endforeach
 </div>
+<button onclick="window.history.back()">Back to central admin home page</button><br>
 @endsection
+@show

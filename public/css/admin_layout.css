@@ -1,5 +1,8 @@
 body {
-    background-color: #c2c8ce;
+    background-color: #9acfc2;
+    margin-top: 25px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
 }
 
 #app {
@@ -12,6 +15,10 @@ body {
     grid-template-rows: auto 1fr auto;
     /* grid-gap: 10px; */
     height: 100vh;
+}
+
+nav {
+    border-radius: 25px;
 }
 
 header {

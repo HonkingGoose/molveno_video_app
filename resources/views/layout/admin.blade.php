@@ -5,10 +5,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css"  href="style.css">
+        @stack('styles')
         <title>Molveno Lake Resort Video Admin App @yield('title')</title>
     </head>
     <body>
+
+
 
         <div id="app">
             <header>
@@ -16,27 +18,44 @@
             </header>
 
             <aside id="left">
-                left
+
             </aside>
 
             <main>
-                <nav class="navbar navbar-dark bg-dark justify-content-start">
-                    <a class="navbar-brand" href="/"><i class="fas fa-video"></i></a>
-                    <ul class="navbar-nav">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="/video">Index of Videos</a>
-                        </li>
-                    </ul>
-                </nav>
+                @section('hello')
+                <div>
+                    <nav class="navbar navbar-dark bg-dark justify-content-start">
+                        <a class="navbar-brand" href="/"><i class="fas fa-video"></i></a>
+                        <ul class="navbar-nav">
+                            <li class="nav-item active">
+                            <a class="nav-link" href="{{ route('video.index') }}">Go to Video Index</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                @show
+                <br>
+                @section('helloOne')
+                <div>
+                    <nav class="navbar navbar-dark bg-dark justify-content-start">
+                        <a class="navbar-brand" href="/"><i class="fas fa-user"></i></a>
+                        <ul class="navbar-nav">
+                            <li class="nav-item active">
+                            <a class="nav-link" href="{{ route('guest.index') }}">Go to list of Guests</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                @show
 
                 @yield('content')
             </main>
 
             <aside id="right">
-                right
+
             </aside>
 
-            <footer>footer</footer>
+            <footer></footer>
         </div>
 
     </body>
