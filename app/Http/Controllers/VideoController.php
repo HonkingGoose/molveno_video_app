@@ -16,7 +16,7 @@ class VideoController extends Controller
      */
     public function index(Request $request)
     {
-        //return view('admin_video.index', ['video' => Video::all()]);
+
 
         if($request->ajax())
         {
@@ -42,7 +42,7 @@ class VideoController extends Controller
     public function create()
     {
         $categories = ['cat1', 'cat2', 'cat3'];
-        // Category::all();
+
         return view('admin_video.create', ['video' => Video::all(), 'categories' => $categories]);
     }
 
@@ -54,51 +54,38 @@ class VideoController extends Controller
      */
     public function store(Request $request)
     {
-        // $video = new Video();
-        // $video->title = $request->input('title');
-        // $video->description = $request->input('description');
-        // $video->category = $request->input('category');
-        // $video->youtube_uid = $request->input('youtube_uid');
-        // $video->suitable_for_kids = (bool) $request->input('suitableKids', 0);
-        // $video->available_to_watch = (bool) $request->input('available_to_watch', 0);
-        // $video->created_by = "flappie het konijn";
-
-        // if ($video->save()) {
-        //     return redirect()->route('admin_video.index');
-        // } else {
-        //     var_dump("Not stored.");
-        // }
-
-        //$categories = ['cat1', 'cat2', 'cat3'];
 
         $rules = array(
             'youtube_uid' => 'required',
             'title' => 'required',
             'description' => 'required',
             'category' =>  'required',
-            'available_to_watch' => 'required',
-            'suitable_for_kids' => 'required',
+
         );
 
         $error = Validator::make($request->all(), $rules);
 
-        if($error->fails())
-        {
+        if ($error->fails()) {
             return response()->json(['errors' => $error->errors()->all()]);
         }
 
-        $form_data = array(
-            'youtube_uid' => $request->youtube_uid,
-            'title' => $request->title,
-            'description' => $request->description,
-            'category' => $request->category,
-            'available_to_watch' => $request->available_to_watch,
-            'suitable_for_kids' => $request->suitable_for_kids
-        );
 
-        Video::create($form_data);
+        $video = new Video();
+        $video->title = $request->input('title');
+        $video->description = $request->input('description');
+        $video->category = $request->input('category');
+        $video->youtube_uid = $request->input('youtube_uid');
+        $video->suitable_for_kids = (bool) $request->input('suitable_for_kids', 0);
+        $video->available_to_watch = (bool) $request->input('available_to_watch', 0);
+        $video->created_by = "henk";
 
-        return response()->json(['success' => 'Data Added successfully.']);
+        if ($video->save()) {
+
+            return response()->json(['success' => 'Data Added successfully.']);
+        } else {
+
+            return response()->json(['error' => 'Creating video failed']);
+        }
 
     }
 
@@ -119,35 +106,55 @@ class VideoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Video $video)
+    public function edit($id)
     {
-        $categories = ['cat1', 'cat2', 'cat3'];
-        return view('admin_video.edit', ['video' => $video, 'categories' => $categories]);
+
+        if(request()->ajax()) {
+            $data = Video::findOrFail($id);
+            return response()->json(['result' => $data]);
+        }
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  Video  $video
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Video $video)
     {
+        $rules = array(
+            'youtube_uid' => 'required',
+            'title' => 'required',
+            'description' => 'required',
+            'category' =>  'required',
+        );
 
+        $error = Validator::make($request->all(), $rules);
+
+        if ($error->fails()) {
+            return response()->json(['errors' => $error->errors()->all()]);
+        }
+
+        $video = Video::find($request->input('id'));
         $video->title = $request->input('title');
         $video->description = $request->input('description');
         $video->category = $request->input('category');
         $video->youtube_uid = $request->input('youtube_uid');
-        $video->suitable_for_kids = (bool) $request->input('suitableKids', 0);
+        $video->suitable_for_kids = (bool) $request->input('suitable_for_kids', 0);
         $video->available_to_watch = (bool) $request->input('available_to_watch', 0);
-        $video->created_by = "flappie het konijn";
+        $video->created_by = "henk";
 
         if ($video->save()) {
-            return redirect()->route('video.index');
+            return response()->json(['success' => 'Updating video succesful']);
         } else {
-            var_dump("Not stored.");
+            return response()->json(['error' => 'Updating video failed']);
         }
+
+
+
+
     }
 
     /**
@@ -156,12 +163,11 @@ class VideoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Video $video)
+    public function destroy($id)
     {
-        if ($video->delete()) {
-            return redirect()->route('video.index');
-        } else {
-            echo "fout bij verwijderen dier";
-        }
+
+        $data = Video::findOrFail($id);
+        $data->delete();
+
     }
 }

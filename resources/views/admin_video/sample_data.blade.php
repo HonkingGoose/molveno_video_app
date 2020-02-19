@@ -33,8 +33,8 @@
                         <th width="5%">Description</th>
                         <th width="5%">Category</th>
                         <th width="5%">Reviews</th>
-                        <th width="5%">Available?</th>
-                        <th width="5%">Suitable?</th>
+                        <th width="5%">Available Video?</th>
+                        <th width="5%">Suitable for Kids?</th>
                         <th width="5%">Created by</th>
                         <th width="5%">Action</th>
                     </tr>
@@ -47,6 +47,7 @@
 
 <!--MODAL-->
 
+
 <div id="formModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -57,7 +58,8 @@
                 <div class="modal-body">
                     <span id="form_result"></span>
                     <form method="post" id="sample_form" class="form-horizontal">
-                        {{ csrf_field() }}
+                        @csrf
+                        {{-- {{ csrf_field() }} --}}
                     <div class="form-group">
                         <label class="control-label col-md-4" for="youtube_uid">Youtube UID:</label>
                             <div class="col-md-8">
@@ -80,9 +82,9 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-md-4" for="category-select">Choose a category:</label>
+                        <label class="control-label col-md-4" for="category">Choose a category:</label>
                             <div class="col-md-8">
-                                <select multiple class="form-control" name="category" id="category-select">
+                                <select multiple class="form-control" name="category" id="category">
                                     <option value="">--Please choose an option--</option>
                                     {{-- @foreach ($categories as $category) --}}
                                     <option value="cat1">cat1</option>
@@ -96,7 +98,7 @@
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-8">
                             <div class="checkbox">
-                                <label for="available_to_watch"><input type="checkbox" id="available_to_watch" name="available_to_watch">Video is available to watch</label>
+                                <label for="available_to_watch"><input type="checkbox" id="available_to_watch" name="available_to_watch" >Video is available to watch</label>
                             </div>
                         </div>
                     </div>
@@ -112,7 +114,7 @@
                         <br />
                         <div class="form-group" align="center">
                             <input type="hidden" name="action" id="action" value="Add" />
-                            <!--<input type="hidden" name="hidden_id" id="hidden_id" />-->
+                            <input type="hidden" name="id" id="hidden_id" />
                             <input type="submit" name="action_button" id="action_button" class="btn btn-warning" value="Add" />
                         </div>
                     </form>
@@ -121,8 +123,23 @@
        </div>
 </div>
 
-
-
+<div id="confirmModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h2 class="modal-title">Confirmation</h2>
+            </div>
+            <div class="modal-body">
+                <h4 align="center" style="margin:0;">Are you sure you want to remove this data?</h4>
+            </div>
+            <div class="modal-footer">
+             <button type="button" name="ok_button" id="ok_button" class="btn btn-danger">OK</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
@@ -196,8 +213,7 @@
     // $('.modal-title').text('Add New Record');
     // $('#action_button').val('Add');
     // $('#action').val('Add');
-    //$('#form_result').html('');
-
+    // $('#form_result').html('');
     $('#formModal').modal('show');
  });
 
@@ -210,13 +226,18 @@
    action_url = "{{ route('video.store') }}";
   }
 
+  if($('#action').val() ==='Edit')
+  {
+   action_url = "{{ route('video.update') }}";
+  }
+
   $.ajax({
    url: action_url,
    method:"POST",
-   data:$(this).serialize(),
-   headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-   dataType:"json",
-    contentType: "application/json",
+   data:$(this).serializeArray(),
+    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+//    dataType:"json",
+    // contentType: "application/json",
    success:function(data)
    {
     let html = '';
@@ -240,11 +261,59 @@
   });
 //   $.ajaxSetup({headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}});
 
+});
+
+$(document).on('click', '.edit', function(){
+    let id = $(this).attr('id');
+    $('#form_result').html('');
+    $.ajax({
+      url:"/admin/video/"+id+"/edit",
+    //   dataType: "json",
+      success:function(data) {
+        $('#youtube_uid').val(data.result.youtube_uid);
+        $('#title').val(data.result.title);
+        $('#description').val(data.result.description);
+        $('#category').val(data.result.category);
+        $('#suitable_for_kids').prop('checked', !!data.result.suitable_for_kids);
+        $('#available_to_watch').prop('checked', !!data.result.available_to_watch);
+        $('#hidden_id').val(id);
+        $('.modal-title').text('Edit Record');
+        $('#action_button').val('Edit');
+        $('#action').val('Edit');
+        $('#formModal').modal('show');
+      }
+    })
+
+})
+
+let user_id;
+
+ $(document).on('click', '.delete', function(){
+  user_id = $(this).attr('id');
+  $('#confirmModal').modal('show');
+ });
+
+ $('#ok_button').click(function(){
+  $.ajax({
+   url:"/admin/video/"+user_id,
+   method: 'DELETE',
+   headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+   beforeSend:function(){
+    $('#ok_button').text('Deleting...');
+   },
+   success:function(data)
+   {
+    setTimeout(function(){
+     $('#confirmModal').modal('hide');
+     $('#user_table').DataTable().ajax.reload();
+     alert('Data Deleted');
+    }, 2000);
+   }
+  })
+ });
 
 
 });
-
- });
 
 
 
