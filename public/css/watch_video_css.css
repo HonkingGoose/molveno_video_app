@@ -1,3 +1,18 @@
 .focused {
     border: 2px solid black;
 }
+
+.flexCont {
+    display: flex;
+    justify-content: space-around;
+    background-color: blue;
+    padding: 10px;
+}
+
+.fifty {
+    width: 45%;
+}
+
+#player {
+    margin: auto;
+}

@@ -12,6 +12,8 @@
 @endsection
 
 @section('content')
+<div class="flexCont">
+<div class="fifty">
 <div id="player"></div>
 
 <script>
@@ -28,7 +30,7 @@
   function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
       height: '390',
-      width: '640',
+      width: '80%',
       videoId: '{{ $video->youtube_uid }}',
       events: {
         'onReady': onPlayerReady,
@@ -39,7 +41,7 @@
 
   // 4. The API will call this function when the video player is ready.
   function onPlayerReady(event) {
-    
+    document.getElementById('player').setAttribute('tabindex', -1);
   }
 
   // 5. The API calls this function when the player's state changes.
@@ -47,37 +49,41 @@
   //    the player should play for six seconds and then stop.
   
   function onPlayerStateChange(event) {
-    
+    if(player.getPlayerState() === 0){
+      document.exitFullscreen();
+    }
   }
-  
+
+  // document.addEventListener('keyup', (event) => {
+  //     // keycode 13 = enter
+  //     if(event.keyCode === 13 && document.getElementById('watchButton').classList.contains('focused')){
+  //         startstop(event);
+  //         console.log('gevonden!');
+  //     }
+  //     // keycode 39 = pijltje naar rechts
+  //     if(event.keyCode === 39){
+  //       let controlsDiv = document.getElementById('controls');
+  //       let index = -1;
+  //       for(let i = 1; i < controlsDiv.childNodes.length; i += 2){
+  //         if(controlsDiv.childNodes[i].classList.contains('focused')){
+  //           index = i;
+  //           controlsDiv.childNodes[i].classList.remove('focused');
+  //         }
+  //       }
+  //       if((controlsDiv.childNodes.length - (index +2)) < 2){
+  //         index = -1;
+  //       }
+  //       controlsDiv.childNodes[index+2].classList.add('focused');
+        
+  //       //console.log(document.getElementById('controls').childNodes);
+  //     }
+  // });
 
   document.addEventListener('keyup', (event) => {
       // keycode 13 = enter
-      if(event.keyCode === 13 && document.getElementById('watchButton').classList.contains('focused')){
-          startstop(event);
-          console.log('gevonden!');
-      }
-      
-      if(event.keyCode === 39){
-        // for(let i = 0; i < document.getElementById('controls').childNodes.length; i++){
-        //   console.log('2 van deze aub');
-        // }
-        let controlsDiv = document.getElementById('controls');
-        let index = -1;
-        
-        for(let i = 1; i < controlsDiv.childNodes.length; i += 2){
-          if(controlsDiv.childNodes[i].classList.contains('focused')){
-            index = i;
-            controlsDiv.childNodes[i].classList.remove('focused');
-          }
-        }
-        if((controlsDiv.childNodes.length - (index +2)) < 2){
-          index = -1;
-        }
-        controlsDiv.childNodes[index+2].classList.add('focused');
-        //let length = document.
-        console.log(document.getElementById('controls').childNodes);
-      }
+      if(event.keyCode === 13 && player.getPlayerState() === 1){
+          startstop();
+      }    
   });
 
   function startstop(event){
@@ -94,13 +100,22 @@
   }
 </script>
     <div id="controls">
-      <div id="watchButton" class="btn btn-primary focused">watch</div>
-      <div class="btn btn-primary">back to index</div>
-      <div class="btn btn-primary">rate</div>
+      <button id="watchButton" class="btn btn-primary">watch</button>
+      <button class="btn btn-primary">back to index</button>
+      <button class="btn btn-primary">rate</button>
     </div>
+    </div>
+    <div class="fifty">
     <div>
         <p>title: {{ $video->title }}</p>
         <p>description: {{ $video->description }}</p>
         <p>category: {{ $video->category }}</p>
     </div>
+    </div>
+    </div>
+    <script>
+    document.getElementById('watchButton').addEventListener("click", function(event) {
+      startstop(event);
+    })
+    </script>
 @endsection
