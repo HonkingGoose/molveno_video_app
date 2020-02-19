@@ -1,5 +1,9 @@
 @extends('layout.app')
 
+@push('styles')
+    <link href="{{ asset('css/watch_video_css.css') }}" rel="stylesheet">
+@endpush
+
 @section('title', $video->title)
 
 @section('sidebar')
@@ -49,8 +53,30 @@
 
   document.addEventListener('keyup', (event) => {
       // keycode 13 = enter
-      if(event.keyCode === 13){
+      if(event.keyCode === 13 && document.getElementById('watchButton').classList.contains('focused')){
           startstop(event);
+          console.log('gevonden!');
+      }
+      
+      if(event.keyCode === 39){
+        // for(let i = 0; i < document.getElementById('controls').childNodes.length; i++){
+        //   console.log('2 van deze aub');
+        // }
+        let controlsDiv = document.getElementById('controls');
+        let index = -1;
+        
+        for(let i = 1; i < controlsDiv.childNodes.length; i += 2){
+          if(controlsDiv.childNodes[i].classList.contains('focused')){
+            index = i;
+            controlsDiv.childNodes[i].classList.remove('focused');
+          }
+        }
+        if((controlsDiv.childNodes.length - (index +2)) < 2){
+          index = -1;
+        }
+        controlsDiv.childNodes[index+2].classList.add('focused');
+        //let length = document.
+        console.log(document.getElementById('controls').childNodes);
       }
   });
 
@@ -67,7 +93,11 @@
       
   }
 </script>
-
+    <div id="controls">
+      <div id="watchButton" class="btn btn-primary focused">watch</div>
+      <div class="btn btn-primary">back to index</div>
+      <div class="btn btn-primary">rate</div>
+    </div>
     <div>
         <p>title: {{ $video->title }}</p>
         <p>description: {{ $video->description }}</p>
