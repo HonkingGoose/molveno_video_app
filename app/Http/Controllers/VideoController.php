@@ -30,7 +30,7 @@ class VideoController extends Controller
                     ->rawColumns(['action'])
                     ->make(true);
         }
-        return view('admin_video.sample_data');
+        return view('admin_video.index');
 
     }
 
