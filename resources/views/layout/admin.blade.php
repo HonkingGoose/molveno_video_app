@@ -6,7 +6,7 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
         @stack('styles')
-        <title>Molveno Lake Resort Video Admin App @yield('title')</title>
+        <title>Admin Molveno @yield('title')</title>
     </head>
     <body>
 
@@ -14,7 +14,7 @@
 
         <div id="app">
             <header>
-                <h1>Video Admin application Molveno</h1>
+                <h1>Admin Molveno</h1>
             </header>
 
             <aside id="left">
@@ -23,12 +23,12 @@
 
             <main>
                 @section('hello')
-                <div >
-                    <nav class="navbar navbar-dark bg-dark justify-content-start col-md-3" >
+                <div>
+                    <nav class="navbar navbar-dark bg-dark justify-content-center" >
                         <a class="navbar-brand" href="/"><i class="fas fa-video"></i></a>
                         <ul class="navbar-nav">
                             <li class="nav-item active">
-                            <a class="nav-link" href="{{ route('video.index') }}">Go to Video Index</a>
+                            <a class="nav-link" href="{{ route('video.index') }}">Video index</a>
                             </li>
                         </ul>
                     </nav>
@@ -37,11 +37,11 @@
                 <br>
                 @section('helloOne')
                 <div>
-                    <nav class="navbar navbar-dark bg-dark justify-content-start col-md-3">
+                    <nav class="navbar navbar-dark bg-dark justify-content-start">
                         <a class="navbar-brand" href="/"><i class="fas fa-user"></i></a>
                         <ul class="navbar-nav">
                             <li class="nav-item active">
-                            <a class="nav-link" href="{{ route('guest.index') }}">Go to list of Guests</a>
+                            <a class="nav-link" href="{{ route('guest.index') }}">Guest list</a>
                             </li>
                         </ul>
                     </nav>

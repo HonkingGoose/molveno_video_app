@@ -4,11 +4,11 @@
     <link href="{{ asset('css/admin_layout.css') }}" rel="stylesheet">
 @endpush
 
-@section('title', 'List of guests')
+@section('title', 'Guest list')
 
 @section('helloOne')
 @section('content')
-<h2>List of Guests</h2>
+<h2>Guest list</h2>
 <div>
     @foreach ($guest as $guest)
         <p>
@@ -17,6 +17,7 @@
         </p>
     @endforeach
 </div>
-<button onclick="window.history.back()">Back to central admin home page</button><br>
+{{-- <button onclick="window.history.back()">Back to admin</button><br> --}}
+<a href="/admin"><button>Back to admin</button></a><br>
 @endsection
 @show

@@ -16,8 +16,9 @@
 <body>
     <div class="container-fluid">
         <br />
-        <button onclick="window.history.back()">Back to central admin home page</button>
-        <h1 align="center">Video App Administration Molveno</h1>
+        {{-- <button onclick="window.history.back()">Back to admin</button> --}}
+        <a href="/admin" class="btn btn-secondary">Back to admin</a><br>
+        <h1 align="center">Administration Molveno</h1>
         <br />
         <div align="right">
             <button type="button" name="create_record" id="create_record" class="btn btn-success btn-sm">Create Record</button>

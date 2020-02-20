@@ -14,7 +14,7 @@ body {
     grid-template-columns: 75px 1fr 75px;
     grid-template-rows: auto 1fr auto;
     /* grid-gap: 10px; */
-    height: 100vh;
+    height: 150vh;
     justify-items: center;
 }
 
@@ -35,6 +35,7 @@ header {
 }
 main {
     grid-area: main;
+
 }
 
 #right {
