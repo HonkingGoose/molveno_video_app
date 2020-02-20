@@ -28,12 +28,12 @@ class AdminVideoTest extends TestCase
      * @test
      */
 
-    public function admin_video__create_page_returns_a_view()
+    public function clicking_admin_video_create_button_opens_a_modal()
     {
-        $response = $this->get('/admin/video/create');
-
-        $response->assertStatus(200);
-        $response->assertViewIs('admin_video.create');
+        // Click button create
+        // Assert modal has proper fields and buttons
+        // Click button create in modal.
+        // Assert save.
     }
 
     /**
