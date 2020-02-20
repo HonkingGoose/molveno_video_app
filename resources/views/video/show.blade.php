@@ -13,7 +13,7 @@
 
 @section('content')
 <div class="flexCont">
-<div class="fifty">
+<div id="videoCont">
 <div id="player"></div>
 
 <script>
@@ -100,15 +100,16 @@
   }
 </script>
     <div id="controls">
-      <button id="watchButton" class="btn btn-primary">watch</button>
-      <button class="btn btn-primary">back to index</button>
-      <button class="btn btn-primary">rate</button>
+      <button id="watchButton" class="buttonFancy">Watch</button>
+      <button class="buttonFancy">Back to index</button>
+      <button class="buttonFancy">Rate</button>
     </div>
     </div>
-    <div class="fifty">
+    <div id="side">
     <div>
-        <p>title: {{ $video->title }}</p>
-        <p>description: {{ $video->description }}</p>
+        <h1 id="sideTitle">{{ $video->title }}</h1>
+        <h4 class="sideSubTitle">description</h4>
+        <p>{{ $video->description }}</p>
         <p>category: {{ $video->category }}</p>
     </div>
     </div>

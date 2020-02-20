@@ -7,9 +7,10 @@ use Faker\Generator as Faker;
 
 $factory->define(App\Video::class, function (Faker $faker) {
     $uids = [
-        'FcQgcMGJW40',
-        'FcG25skqziM',
-        '5k2UhoYF1qo'
+        'KmQnNWNlIac',
+        'TGtnOx5pNew',
+        'yVmAQ6rXRmk',
+        '4RepHt7jgGo'
     ];
     $categories = ['cat1', 'cat2', 'cat3'];
 

@@ -1,18 +1,47 @@
-.focused {
-    border: 2px solid black;
+body {
+    background-color: #343434;
+    color: white;    
 }
 
 .flexCont {
     display: flex;
     justify-content: space-around;
-    background-color: blue;
+    /* background-color: #707070; */
     padding: 10px;
-}
-
-.fifty {
-    width: 45%;
 }
 
 #player {
     margin: auto;
+    width: 80%;
+}
+
+#side {
+    background-color: #707070;
+    width: 40%;
+    padding: 10px;
+}
+
+#videoCont {
+    background-color: #C6C6C6;
+    width: 60%;
+    padding: 10px;
+}
+
+.buttonFancy {
+    border: 7px solid white;
+    background-color: rgba(0,0,0,0.0);
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+    font-size: larger;
+    margin: 5px;
+}
+
+#sideTitle {
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.sideSubTitle {
+    font-weight: bold;
 }
