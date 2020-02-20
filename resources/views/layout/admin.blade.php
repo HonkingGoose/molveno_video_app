@@ -23,8 +23,8 @@
 
             <main>
                 @section('hello')
-                <div>
-                    <nav class="navbar navbar-dark bg-dark justify-content-start">
+                <div >
+                    <nav class="navbar navbar-dark bg-dark justify-content-start col-md-3" >
                         <a class="navbar-brand" href="/"><i class="fas fa-video"></i></a>
                         <ul class="navbar-nav">
                             <li class="nav-item active">
@@ -37,7 +37,7 @@
                 <br>
                 @section('helloOne')
                 <div>
-                    <nav class="navbar navbar-dark bg-dark justify-content-start">
+                    <nav class="navbar navbar-dark bg-dark justify-content-start col-md-3">
                         <a class="navbar-brand" href="/"><i class="fas fa-user"></i></a>
                         <ul class="navbar-nav">
                             <li class="nav-item active">
