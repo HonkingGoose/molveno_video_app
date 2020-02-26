@@ -1,11 +1,9 @@
+[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=HonkingGoose/molveno_video_app)](https://dependabot.com)
+
 # Molveno Lake Resort video app
 
 This app uses the Laravel framework.
 You do not need to have Laravel installed globally.
-
-## Badges:
-
-[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=HonkingGoose/molveno_video_app)](https://dependabot.com)
 
 ## About the docker files:
 
