@@ -34,3 +34,7 @@ Route::get('/', function () {
 });
 
 Route::get('watch_video/{video}', 'VideoController@show');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
