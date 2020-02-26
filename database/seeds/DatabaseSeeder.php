@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
         $this->call(VideosTableSeeder::class);
         $this->call(GuestSeeder::class);
         $this->call(AdminUserSeeder::class);
+        $this->call(RatingsTableSeeder::class);
 
         if (App::environment('local')) {
             $this->call(DevUserSeeder::class);
