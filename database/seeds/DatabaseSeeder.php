@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\App;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,5 +14,11 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(VideosTableSeeder::class);
         $this->call(GuestSeeder::class);
+        $this->call(AdminUserSeeder::class);
+
+        if (App::environment('local')) {
+            $this->call(DevUserSeeder::class);
+        }
+
     }
 }

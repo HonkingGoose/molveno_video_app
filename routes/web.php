@@ -12,6 +12,7 @@
 */
 
 // Admin Routes
+Route::middleware('auth')->group(function () {
 Route::prefix('admin')->group(function () {
     Route::get('/', function () {
         return view('layout.admin');
@@ -21,8 +22,8 @@ Route::prefix('admin')->group(function () {
     Route::post('video/update', 'VideoController@update')->name('video.update');
     Route::get('guest', 'GuestController@index')->name('guest.index');
     Route::view('/', 'admin_video.central_page');
+    });
 });
-
 
 
 // Guest routes
