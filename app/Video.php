@@ -25,15 +25,15 @@ class Video extends Model
 
     public function getAverageRating()
     {
-        // $result = DB::table('ratings')->select('score')->where('video_id' = 1)->get();
-        // return $result;
-
+        $result = DB::table('ratings')->select('score')->where('video_id', 1)->get();
         $totalScoreSum = 0;
-        foreach ($this->ratings() as $rating) {
-            $totalScoreSum += $rating;
+        $amount = 0;
+        foreach($result as $score){
+            $totalScoreSum += $score->score;
+            $amount += 1; 
         }
 
-        $averageRating = round($totalScoreSum / count($this->ratings()), $precision = 1, $mode = PHP_ROUND_HALF_UP);
+        $averageRating = round($totalScoreSum / $amount, $precision = 1, $mode = PHP_ROUND_HALF_UP);
         return $averageRating;
     }
 

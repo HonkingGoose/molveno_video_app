@@ -111,7 +111,7 @@
         <h4 class="sideSubTitle">description</h4>
         <p>{{ $video->description }}</p>
         <p>category: {{ $video->category }}</p>
-        <pre>{{ var_dump($video->getAverageRating()) }}</pre>
+        <pre>{{ $video->getAverageRating() }}</pre>
     </div>
     </div>
     </div>
