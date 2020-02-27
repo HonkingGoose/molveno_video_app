@@ -16,8 +16,9 @@
 <body>
     <div class="container-fluid">
         <br />
-        {{-- <button onclick="window.history.back()">Back to admin</button> --}}
-        <a href="/admin" class="btn btn-secondary">Back to admin</a><br>
+
+        <a href="/admin" class="btn btn-primary">Back to admin</a>
+
         <h1 align="center">Administration Molveno</h1>
         <br />
         <div align="right">

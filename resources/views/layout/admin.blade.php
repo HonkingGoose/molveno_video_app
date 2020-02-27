@@ -24,6 +24,7 @@
             <main>
                 @section('hello')
                 <div>
+                    <a href="/logout" type="button" class="btn btn-primary" style="float: right;">Logout</a>
                     <nav class="navbar navbar-dark bg-dark justify-content-center" >
                         <a class="navbar-brand" href="/"><i class="fas fa-video"></i></a>
                         <ul class="navbar-nav">
