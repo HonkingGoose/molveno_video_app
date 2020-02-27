@@ -47,7 +47,7 @@
   // 5. The API calls this function when the player's state changes.
   //    The function indicates that when playing a video (state=1),
   //    the player should play for six seconds and then stop.
-  
+
   function onPlayerStateChange(event) {
     if(player.getPlayerState() === 0){
       document.exitFullscreen();
@@ -74,7 +74,7 @@
   //         index = -1;
   //       }
   //       controlsDiv.childNodes[index+2].classList.add('focused');
-        
+
   //       //console.log(document.getElementById('controls').childNodes);
   //     }
   // });
@@ -83,7 +83,7 @@
       // keycode 13 = enter
       if(event.keyCode === 13 && player.getPlayerState() === 1){
           startstop();
-      }    
+      }
   });
 
   function startstop(event){
@@ -94,9 +94,9 @@
       } else {
         document.getElementById('player').requestFullscreen();
         player.playVideo();
-      
+
       }
-      
+
   }
 </script>
     <div id="controls">
@@ -111,6 +111,7 @@
         <h4 class="sideSubTitle">description</h4>
         <p>{{ $video->description }}</p>
         <p>category: {{ $video->category }}</p>
+        <pre>{{ $video->getAverageRating() }}</pre>
     </div>
     </div>
     </div>

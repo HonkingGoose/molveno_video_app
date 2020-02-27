@@ -16,13 +16,10 @@ class VideoController extends Controller
      */
     public function index(Request $request)
     {
-
-
-        if($request->ajax())
-        {
+        if ($request->ajax()) {
             $data = Video::latest()->get();
             return DataTables::of($data)
-                    ->addColumn('action', function($data){
+                    ->addColumn('action', function ($data) {
                         $button = '<button type="button" name="edit" id="'.$data->id.'" class="edit btn btn-primary btn-sm">Edit</button>';
                         $button .= '&nbsp;&nbsp;&nbsp;<button type="button" name="edit" id="'.$data->id.'" class="delete btn btn-danger btn-sm">Delete</button>';
                         return $button;
@@ -31,7 +28,6 @@ class VideoController extends Controller
                     ->make(true);
         }
         return view('admin_video.index');
-
     }
 
     /**
@@ -54,7 +50,6 @@ class VideoController extends Controller
      */
     public function store(Request $request)
     {
-
         $rules = array(
             'youtube_uid' => 'required',
             'title' => 'required',
@@ -80,13 +75,10 @@ class VideoController extends Controller
         $video->created_by = "henk";
 
         if ($video->save()) {
-
             return response()->json(['success' => 'Data Added successfully.']);
         } else {
-
             return response()->json(['error' => 'Creating video failed']);
         }
-
     }
 
     /**
@@ -108,8 +100,7 @@ class VideoController extends Controller
      */
     public function edit($id)
     {
-
-        if(request()->ajax()) {
+        if (request()->ajax()) {
             $data = Video::findOrFail($id);
             return response()->json(['result' => $data]);
         }
@@ -151,10 +142,6 @@ class VideoController extends Controller
         } else {
             return response()->json(['error' => 'Updating video failed']);
         }
-
-
-
-
     }
 
     /**
@@ -165,9 +152,7 @@ class VideoController extends Controller
      */
     public function destroy($id)
     {
-
         $data = Video::findOrFail($id);
         $data->delete();
-
     }
 }
