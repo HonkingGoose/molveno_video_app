@@ -3,65 +3,44 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-        @stack('styles')
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
+        <link href="{{ asset('css/admin_layout.css') }}" rel="stylesheet">
         <title>Admin Molveno @yield('title')</title>
     </head>
     <body>
 
+        <header>
+            <h1>&nbsp;&nbsp;&nbsp;&nbsp;Admin Molveno</h1>
+        </header>
+
+            <ul >
+                <li class="active"><a href="/admin">Home</a></li>
+                <li><a href="{{ route('video.index') }}">Video index</a></li>
+                <li><a href="{{ route('guest.index') }}">Guest index</a></li>
+                <li><a href="/logout">Log out</a></li>
+            </ul>
+
+            @yield('content')
 
 
-        <div id="app">
-            <header>
-                <h1>Admin Molveno</h1>
-            </header>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+            <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+            <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+            @stack('scripts')
 
-            <aside id="left">
-
-            </aside>
-
-            <main>
-                @section('hello')
-                <div>
-                    <a href="/logout" type="button" class="btn btn-primary" style="float: right;">Logout</a>
-                    <nav class="navbar navbar-dark bg-dark justify-content-center" >
-                        <a class="navbar-brand" href="/"><i class="fas fa-video"></i></a>
-                        <ul class="navbar-nav">
-                            <li class="nav-item active">
-                            <a class="nav-link" href="{{ route('video.index') }}">Video index</a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-                @show
-                <br>
-                @section('helloOne')
-                <div>
-                    <nav class="navbar navbar-dark bg-dark justify-content-start">
-                        <a class="navbar-brand" href="/"><i class="fas fa-user"></i></a>
-                        <ul class="navbar-nav">
-                            <li class="nav-item active">
-                            <a class="nav-link" href="{{ route('guest.index') }}">Guest list</a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-                @show
-
-                @yield('content')
-            </main>
-
-            <aside id="right">
-
-            </aside>
-
-            <footer></footer>
-        </div>
-
+            <script type="text/javascript">
+                // $('li a').click(function(){
+                //     $('li a').css("background-color", "");
+                //     $(this).css("background-color", "green");
+                // });
+                $('li a').click(function(){
+                    $('a').parent().removeClass('active');
+                    $(this).parent().addClass('active');
+                    });​
+            </script>
     </body>
 
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </html>
