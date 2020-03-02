@@ -19,7 +19,6 @@ class VideoTest extends TestCase
 
     public function creating_a_record_is_saved_to_the_database()
     {
-        // $this->withoutExeceptionHandling();
         $video = factory(Video::class)->create();
         print_r($video);
 

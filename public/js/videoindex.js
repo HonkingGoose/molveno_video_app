@@ -128,7 +128,7 @@ $(document).on('click', '.edit', function(){
       }
     })
 
-})
+});
 
 let user_id;
 
