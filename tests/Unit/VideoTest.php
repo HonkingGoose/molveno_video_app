@@ -4,7 +4,7 @@ namespace Tests\Unit;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithoutEvents;
-use PHPUnit\Framework\TestCase;
+use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use App\Video;
 use Illuminate\Support\Facades\DB;
