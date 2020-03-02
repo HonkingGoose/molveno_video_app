@@ -19,7 +19,6 @@ class Video extends Model
 
     /**
      * Calculate the average rating from the videos in the database.
-     * @param  int $id
      * @return float $output
      */
 
@@ -30,11 +29,10 @@ class Video extends Model
         $amount = 0;
         foreach($result as $score){
             $totalScoreSum += $score->score;
-            $amount += 1; 
+            $amount += 1;
         }
 
-        $averageRating = round($totalScoreSum / $amount, $precision = 1, $mode = PHP_ROUND_HALF_UP);
-        return $averageRating;
+        return round($totalScoreSum / $amount, $precision = 1, $mode = PHP_ROUND_HALF_UP);
     }
 
     /**

@@ -56,7 +56,7 @@ class AdminVideoTest extends TestCase
      * @test
      */
 
-    public function store_succes_saves_to_database_and_redirects()
+    public function store_success_saves_to_database_and_redirects()
     {
         $data = factory(Video::class)->make()->toArray();
 

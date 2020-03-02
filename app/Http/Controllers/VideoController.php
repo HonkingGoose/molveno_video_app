@@ -50,13 +50,13 @@ class VideoController extends Controller
      */
     public function store(Request $request)
     {
-        $rules = array(
+        $rules = [
             'youtube_uid' => 'required',
             'title' => 'required',
             'description' => 'required',
             'category' =>  'required',
 
-        );
+        ];
 
         $error = Validator::make($request->all(), $rules);
 
@@ -115,12 +115,12 @@ class VideoController extends Controller
      */
     public function update(Request $request, Video $video)
     {
-        $rules = array(
+        $rules = [
             'youtube_uid' => 'required',
             'title' => 'required',
             'description' => 'required',
             'category' =>  'required',
-        );
+        ];
 
         $error = Validator::make($request->all(), $rules);
 
@@ -138,7 +138,7 @@ class VideoController extends Controller
         $video->created_by = "henk";
 
         if ($video->save()) {
-            return response()->json(['success' => 'Updating video succesful']);
+            return response()->json(['success' => 'Updating video successful']);
         } else {
             return response()->json(['error' => 'Updating video failed']);
         }
