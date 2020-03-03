@@ -3,7 +3,7 @@
 
 @section('title', 'Guest list')
 
-@section('content')
+@section('contentTwo')
 <br>
 <br>
 <h2>Guest list</h2>

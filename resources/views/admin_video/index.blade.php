@@ -4,7 +4,7 @@
     @section('title', 'Video index')
 
 
-    @section('content')
+    @section('contentTwo')
         <div class="container-fluid">
             <br />
             <br />
