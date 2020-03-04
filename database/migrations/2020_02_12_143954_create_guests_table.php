@@ -17,6 +17,7 @@ class CreateGuestsTable extends Migration
             $table->bigIncrements('id');
             $table->string('firstName');
             $table->string('lastName');
+            $table->string('salt');
             $table->timestamps();
         });
     }

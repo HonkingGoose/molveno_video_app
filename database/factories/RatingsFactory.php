@@ -9,5 +9,6 @@ $factory->define(Rating::class, function (Faker $faker) {
     return [
         'score' => $faker->numberBetween($min = 1, $max = 5),
         'video_id' => 1,
+        'user_hash' => rand()
     ];
 });

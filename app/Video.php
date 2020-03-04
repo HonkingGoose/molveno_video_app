@@ -24,7 +24,7 @@ class Video extends Model
 
     public function getAverageRating()
     {
-        $result = DB::table('ratings')->select('score')->where('video_id', 1)->get();
+        $result = DB::table('ratings')->select('score')->where('video_id', $this->id)->get();
         $totalScoreSum = 0;
         $amount = 0;
         foreach($result as $score){

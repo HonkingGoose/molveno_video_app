@@ -8,6 +8,7 @@ use Faker\Generator as Faker;
 $factory->define(Guest::class, function (Faker $faker) {
     return [
         'firstName' => $faker->firstName,
-        'lastName' => $faker->lastName
+        'lastName' => $faker->lastName,
+        'salt' => rand()
     ];
 });
