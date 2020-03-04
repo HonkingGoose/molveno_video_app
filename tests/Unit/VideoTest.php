@@ -20,12 +20,7 @@ class VideoTest extends TestCase
     public function creatingARecordIsSavedToTheDatabase()
     {
         $video = factory(Video::class)->create();
-        print_r($video);
-
         $response = DB::table('videos')->get();
-        print_r($response);
-
-        $this->assertDatabaseHas('videos', $video);
-
+        $this->assertDatabaseHas('videos', $video->toArray());
     }
 }
