@@ -8,7 +8,14 @@
 @endsection
 
 @section('content')
-    <div>
-        <p>tekst</p>
+    <div class="videoCollectie">
+        @foreach ($video as $video)
+            <div class="videoItem">
+                <a href="watch_video/{{$video->id}}"><img src="https://img.youtube.com/vi/{{$video->youtube_uid}}/0.jpg" alt=""></a>
+                <p class="videoTitle">
+                    {{$video->title}}
+                </p>
+            </div>
+        @endforeach
     </div>
 @endsection

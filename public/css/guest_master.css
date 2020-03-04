@@ -1,1 +1,22 @@
-/* hoi */
+
+
+.videoCollectie {
+    /* padding: 2.5%; */
+    display:flex;
+    flex-wrap: wrap;
+    /* justify-content: space-between; */
+
+}
+
+.videoItem {
+    width: 30%;
+    margin: calc(10%/6);
+    background-color:#bac7ed33;
+    padding: 1vw;
+
+}
+
+.videoItem img {
+    width: 100%;
+    border-radius: 5px;
+}

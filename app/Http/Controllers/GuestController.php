@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Guest;
+use App\Video;
 
 class GuestController extends Controller
 {
@@ -16,6 +18,14 @@ class GuestController extends Controller
     {
         return view('guest.index', ['guest' => Guest::all()]);
     }
+
+    public function indexVideo() {
+
+        return view('video.index', ['video' => Video::all()]);
+    }
+
+
+
 
     /**
      * Show the form for creating a new resource.

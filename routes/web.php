@@ -23,14 +23,10 @@ Route::middleware('auth')->group(function () {
 
 
 // Guest routes
-Route::get('/', function () {
-    echo "Guest landing page";
-    foreach (App\Video::all() as $video) {
-        echo $video->title;
-    }
+Route::prefix('guest')->group(function () {
+    Route::get('watch_video', 'GuestController@indexVideo');
+
+    Route::get('watch_video/{video}', 'VideoController@show');
 });
-
-Route::get('watch_video/{video}', 'VideoController@show');
-
 Auth::routes();
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
