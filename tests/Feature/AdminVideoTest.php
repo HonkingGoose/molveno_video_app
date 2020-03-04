@@ -16,7 +16,7 @@ class AdminVideoTest extends TestCase
      * @test
      */
 
-    public function admin_video_page_returns_a_view()
+    public function adminVideoPageReturnsAView()
     {
         $response = $this->get('/admin/video');
 
@@ -28,7 +28,7 @@ class AdminVideoTest extends TestCase
      * @test
      */
 
-    public function clicking_admin_video_create_button_opens_a_modal()
+    public function clickingAdminVideoCreateButtonOpensAModal()
     {
         // Click button create
         // Assert modal has proper fields and buttons
@@ -40,7 +40,7 @@ class AdminVideoTest extends TestCase
      * @test
      */
 
-    public function store_with_empty_data_fails()
+    public function storeWithEmptyDataFails()
     {
         $response = $this->post(
             'admin/video/1', $data = [
@@ -56,7 +56,7 @@ class AdminVideoTest extends TestCase
      * @test
      */
 
-    public function store_success_saves_to_database_and_redirects()
+    public function storeSuccessSavesToDatabaseAndRedirects()
     {
         $data = factory(Video::class)->make()->toArray();
 
