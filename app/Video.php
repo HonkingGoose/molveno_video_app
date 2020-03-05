@@ -27,7 +27,7 @@ class Video extends Model
         $result = DB::table('ratings')->select('score')->where('video_id', $this->id)->get();
         $totalScoreSum = 0;
         $amount = 0;
-        foreach($result as $score){
+        foreach ($result as $score) {
             $totalScoreSum += $score->score;
             $amount += 1;
         }

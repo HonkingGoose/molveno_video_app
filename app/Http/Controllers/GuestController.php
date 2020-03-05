@@ -20,8 +20,8 @@ class GuestController extends Controller
         return view('guest.index', ['guest' => Guest::all()]);
     }
 
-    public function indexVideo() {
-
+    public function indexVideo()
+    {
         return view('video.index', ['video' => Video::all()]);
     }
 
@@ -57,7 +57,7 @@ class GuestController extends Controller
      */
     public function show($id)
     {
-       //
+        //
     }
 
     /**
@@ -100,7 +100,8 @@ class GuestController extends Controller
      * return
      */
 
-    public function postRating(Request $request) {
+    public function postRating(Request $request)
+    {
 
         // pak molveno room number uit request
         // zoek huidige klant op bij room number
@@ -116,7 +117,7 @@ class GuestController extends Controller
 
         try {
             $ratingSucceed = $rating->save();
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             // do logging? or ignore? whatever... you decide.
         }
 
@@ -126,5 +127,5 @@ class GuestController extends Controller
         // } else {
         //     // the alternative.
         // }
-     }
+    }
 }

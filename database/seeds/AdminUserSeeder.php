@@ -17,7 +17,7 @@ class AdminUserSeeder extends Seeder
             !getenv('MOLVENO_ADMIN_USER') ||
             !getenv('MOLVENO_ADMIN_EMAIL') ||
             !getenv('MOLVENO_ADMIN_PASSWORD')
-        ){
+        ) {
             throw new Exception("Admin variables not provided");
         }
 
