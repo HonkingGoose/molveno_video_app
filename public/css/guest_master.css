@@ -15,11 +15,11 @@ body {
 }
 
 .videoItem {
+    display: block;
     width: 30%;
     margin: calc(10%/6);
-    background-color:#707070;
+    background-color:#f8f4f4;
     padding: 1vw;
-
 }
 
 .videoItem:hover, .videoItem:focus {
@@ -27,6 +27,14 @@ body {
     color: black;
 }
 
+a:link{
+    text-decoration: none;
+    color: black;
+}
+
+a {
+    color: black;
+}
 .videoItem img {
     width: 100%;
     border-radius: 5px;

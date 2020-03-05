@@ -11,8 +11,9 @@
 
     <div class="videoCollectie">
         @foreach ($video as $video)
-            <div class="videoItem" tabindex="1">
-                <a href="watch_video/{{$video->id}}"><img src="https://img.youtube.com/vi/{{$video->youtube_uid}}/0.jpg" alt=""></a>
+            <a href="watch_video/{{$video->id}}" class="videoItem">
+
+                <img src="https://img.youtube.com/vi/{{$video->youtube_uid}}/0.jpg" alt="">
 
                 <p class="videoTitle">
                     {{$video->title}}
@@ -20,7 +21,7 @@
                 <p class="videoDescription">
                     {{$video->description}}
                 </p>
-            </div>
+            </a>
         @endforeach
     </div>
 @endsection
