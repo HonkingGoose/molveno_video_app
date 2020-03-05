@@ -1,22 +1,47 @@
+body {
+    background-color: #343434;
+    color: white;
+}
 
+.titlePage {
+    display: flex;
+    padding-top: 40px;
+    justify-content: center;
+}
 
 .videoCollectie {
-    /* padding: 2.5%; */
     display:flex;
     flex-wrap: wrap;
-    /* justify-content: space-between; */
-
 }
 
 .videoItem {
     width: 30%;
     margin: calc(10%/6);
-    background-color:#bac7ed33;
+    background-color:#707070;
     padding: 1vw;
 
+}
+
+.videoItem:hover, .videoItem:focus {
+    background-color: lightskyblue;
+    color: black;
 }
 
 .videoItem img {
     width: 100%;
     border-radius: 5px;
+}
+
+.videoTitle {
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 10px;
+    font-size: 20px;
+    margin-bottom: 0px;
+}
+
+.videoDescription {
+    text-align: center;
+    font-size: 15px;
 }

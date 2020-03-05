@@ -18,6 +18,6 @@ class VideosTableSeeder extends Seeder
 
         (new Faker\Generator)->seed(123);
 
-        factory(App\Video::class, 3)->create();
+        factory(App\Video::class, 9)->create();
     }
 }
