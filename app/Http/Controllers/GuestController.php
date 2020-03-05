@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Guest;
 use App\Video;
+use App\Rating;
 
 class GuestController extends Controller
 {
@@ -92,4 +93,38 @@ class GuestController extends Controller
     {
         //
     }
+
+    /**
+     * POST method to post rating
+     * @param int $input
+     * return
+     */
+
+    public function postRating(Request $request) {
+
+        // pak molveno room number uit request
+        // zoek huidige klant op bij room number
+        // gebruik deze klant voor het plaatsen van rating
+
+        $ratingSucceed = false;
+        // var_dump(intval($request->video_id));
+
+        $rating = new Rating;
+        $rating->video_id = intval($request->video_id);
+        $rating->score = intval($request->score);
+        $rating->user_hash = \App\Guest::find(1)->generateUserHash();
+
+        try {
+            $ratingSucceed = $rating->save();
+        } catch(\Exception $e) {
+            // do logging? or ignore? whatever... you decide.
+        }
+
+        return response()->json(["succeed" => $ratingSucceed]);
+        // if ($ratingSucceed) {
+        //     // do whatever you need to do when a rating succeeds
+        // } else {
+        //     // the alternative.
+        // }
+     }
 }

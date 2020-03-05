@@ -25,8 +25,8 @@ Route::middleware('auth')->group(function () {
 // Guest routes
 Route::prefix('guest')->group(function () {
     Route::get('watch_video', 'GuestController@indexVideo');
-
     Route::get('watch_video/{video}', 'VideoController@show');
+    Route::post('watch_video/{video}', 'GuestController@postRating');
 });
 Auth::routes();
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
