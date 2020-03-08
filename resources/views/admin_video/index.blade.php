@@ -13,7 +13,7 @@
             </div>
             <br />
             <div class="table-responsive">
-                <table id="user_table" class="table table-bordered table-striped">
+                <table id="user_table" class="table table-bordered table-striped" >
                     <thead>
                         <tr>
                             <th width="5%">Created at</th>

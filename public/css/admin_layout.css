@@ -1,18 +1,34 @@
 body {
 
-    background-color: rgb(229, 241, 248);
+    background-color: #343434;
+    color:white;
     margin: 15px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 
 }
 
+.table>tbody>tr>td, .table>thead>tr>th {
+    background-color: #707070;
+}
+
+.form-group, .modal-title {
+    color: black;
+}
+
+.form-group.row {
+    color: white;
+}
+
+.modal-body>h4 {
+    color: black;
+}
 
 ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #333;
+    background-color: #707070;
   }
 
   li {
@@ -28,7 +44,7 @@ ul {
   }
 
   li a:hover {
-    background-color: gray;
+    background-color: white;
   }
 
   a:link{
