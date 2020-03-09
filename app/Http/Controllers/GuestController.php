@@ -41,7 +41,7 @@ class GuestController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -52,7 +52,7 @@ class GuestController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -63,7 +63,7 @@ class GuestController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -74,8 +74,8 @@ class GuestController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int                      $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -86,7 +86,7 @@ class GuestController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -96,6 +96,7 @@ class GuestController extends Controller
 
     /**
      * POST method to post rating
+     *
      * @param int $input
      * return
      */
@@ -142,8 +143,8 @@ class GuestController extends Controller
         foreach($dbHash as $f){
             $id = $f->id;
             DB::table('ratings')
-            ->where('id', $id)
-            ->update(['user_hash' => 'removed after checkout']);
+                ->where('id', $id)
+                ->update(['user_hash' => 'removed after checkout']);
         }
         // redirect to success page
         return redirect('guest/checkout/success');
