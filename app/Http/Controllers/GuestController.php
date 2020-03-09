@@ -133,11 +133,18 @@ class GuestController extends Controller
     {
         $input = $input;
         // get hash
+        // TODO: get guest id from input
         $hash = Guest::find(1)->generateUserHash();
         // compare database entries to hash
         $dbHash = DB::table('ratings')->select('id')->where('user_hash', $hash)->get();
         print_r($dbHash);
         // strip hashes from matching entries
+        foreach($dbHash as $f){
+            $id = $f->id;
+            DB::table('ratings')
+            ->where('id', $id)
+            ->update(['user_hash' => 'removed after checkout']);
+        }
         // redirect to success page
         return redirect('guest/checkout/success');
     }
