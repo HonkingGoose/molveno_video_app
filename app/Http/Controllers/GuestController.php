@@ -131,13 +131,14 @@ class GuestController extends Controller
 
     public function tearDown($input)
     {
-        // $input = $input;
-        $hash = Guest::find(1)->generateUserHash();
+        $input = $input;
         // get hash
+        $hash = Guest::find(1)->generateUserHash();
         // compare database entries to hash
         $dbHash = DB::table('ratings')->select('id')->where('user_hash', $hash)->get();
         print_r($dbHash);
         // strip hashes from matching entries
         // redirect to success page
+        return redirect('guest/checkout/success');
     }
 }
