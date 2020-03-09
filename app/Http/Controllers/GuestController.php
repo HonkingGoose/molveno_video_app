@@ -128,4 +128,16 @@ class GuestController extends Controller
         //     // the alternative.
         // }
     }
+
+    public function tearDown($input)
+    {
+        // $input = $input;
+        $hash = Guest::find(1)->generateUserHash();
+        // get hash
+        // compare database entries to hash
+        $dbHash = DB::table('ratings')->select('id')->where('user_hash', $hash)->get();
+        print_r($dbHash);
+        // strip hashes from matching entries
+        // redirect to success page
+    }
 }

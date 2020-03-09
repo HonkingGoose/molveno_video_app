@@ -16,6 +16,7 @@ Route::middleware('auth')->group(function () {
     Route::prefix('admin')->group(function () {
         Route::resource('video', 'VideoController');
         Route::post('video/update', 'VideoController@update')->name('video.update');
+        Route::post('guest/checkout', 'GuestController@teardown');
         Route::get('guest', 'GuestController@index')->name('guest.index');
         Route::view('/', 'layout.admin');
     });
