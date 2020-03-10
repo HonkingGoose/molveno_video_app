@@ -59,12 +59,11 @@ $(document).ready(function(){
 
     $('#create_record').on("click",function(){
     $('.modal-title').text('Add New Record');
-    // $('#action_button').val('Add');
-    // $('#action').val('Add');
-    // $('#form_result').html('');
-
+    $('#action_button').val('Add');
+    $('#action').val('Add');
+    $('#form_result').html('');
+    $('#sample_form')[0].reset();
     $('#formModal').modal('show');
-
     });
 
  $('#sample_form').on('submit', function(event){
@@ -136,15 +135,13 @@ let user_id;
             url:"/admin/video/"+user_id,
             method: 'DELETE',
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-            beforeSend:function(){
-                $('#ok_button').text('Deleting...');
-            },
             success:function(data){
-                setTimeout(function(){
                 $('#confirmModal').modal('hide');
                 $('#user_table').DataTable().ajax.reload();
-                alert('Data Deleted');
-                }, 1000);
+                console.log(data);
+            },
+            error: function(error){
+            console.log(error);
             }
         })
     });

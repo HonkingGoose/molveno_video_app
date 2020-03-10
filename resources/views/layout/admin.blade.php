@@ -33,19 +33,14 @@
 
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <!-- Left Side Of Navbar -->
-                            <ul class="navbar-nav mr-auto">
+                            <ul class="nav" class="navbar-nav mr-auto">
 
                                     <li class="active"><a href="/admin">Home</a></li>
                                     <li><a href="{{ route('video.index') }}">Video index</a></li>
                                     <li><a href="{{ route('guest.index') }}">Guest index</a></li>
                                     <li><a href="/logout">Log out</a></li>
-
-                            </ul>
-
-                            <!-- Right Side Of Navbar -->
-                            <ul class="navbar-nav ml-auto">
-                                <!-- Authentication Links -->
-                                @guest
+                                 <!-- Authentication Links -->
+                                    @guest
                                     <li class="nav-item">
                                         <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                                     </li>
@@ -54,14 +49,16 @@
                                             <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                         </li>
                                     @endif
-                                @else
+                                    @else
                                     <li class="nav-item dropdown">
-
+                                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                            {{ Auth::user()->name }} <span class="caret"></span>
+                                        </a>
 
                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                             <a class="dropdown-item" href="{{ route('logout') }}"
-                                               onclick="event.preventDefault();
-                                                             document.getElementById('logout-form').submit();">
+                                                onclick="event.preventDefault();
+                                                            document.getElementById('logout-form').submit();">
                                                 {{ __('Logout') }}
                                             </a>
 
@@ -72,6 +69,11 @@
                                     </li>
                                 @endguest
                             </ul>
+
+                            {{-- <!-- Right Side Of Navbar -->
+                            <ul class="navbar-nav ml-auto">
+
+                            </ul> --}}
                         </div>
                     </div>
                 </nav>
@@ -94,14 +96,12 @@
             @stack('scripts')
 
             <script type="text/javascript">
-                // $('li a').click(function(){
-                //     $('li a').css("background-color", "");
-                //     $(this).css("background-color", "green");
-                // });
-                $('a').click(function(){
-                    $('a').parent().removeClass('active');
-                    $(this).parent().addClass('active');
-                    });​
+              $(function(){
+                    $('.nav a').filter(function(){return this.href==location.href}).parent().addClass('active').siblings().removeClass('active')
+                    $('.nav a').click(function(){
+                        $(this).parent().addClass('active').siblings().removeClass('active')
+                    })
+                })
             </script>
     </body>
 
