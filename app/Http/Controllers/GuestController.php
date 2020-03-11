@@ -15,13 +15,14 @@ class GuestController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         return view('guest.index', ['guest' => Guest::all()]);
     }
 
-    public function indexVideo()
+    public function indexVideo(Request $request)
     {
+        $this->getCurrentGuest($request);
         return view('video.index', ['video' => Video::all()]);
     }
 
@@ -103,6 +104,7 @@ class GuestController extends Controller
 
     public function postRating(Request $request)
     {
+        $currentGuest = $this->getCurrentGuest($request);
 
         // pak molveno room number uit request
         // zoek huidige klant op bij room number
@@ -140,7 +142,7 @@ class GuestController extends Controller
         $dbHash = DB::table('ratings')->select('id')->where('user_hash', $hash)->get();
         print_r($dbHash);
         // strip hashes from matching entries
-        foreach($dbHash as $f){
+        foreach ($dbHash as $f) {
             $id = $f->id;
             DB::table('ratings')
                 ->where('id', $id)
@@ -148,5 +150,16 @@ class GuestController extends Controller
         }
         // redirect to success page
         return redirect('guest/checkout/success');
+    }
+
+    private function getCurrentGuest(Request $request)
+    {
+        if ($request->hasCookie("ROOM_NUMBER")) {
+            $roomNumber = $request->cookie("ROOM_NUMBER");
+            return Guest::where('roomNumber', $roomNumber);
+        } else {
+            echo "TODO: cookie not set. redirect to kamer selection page";
+        }
+
     }
 }
