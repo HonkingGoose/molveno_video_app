@@ -20,6 +20,8 @@ Route::middleware('auth')->group(function () {
         Route::get('guest', 'GuestController@index')->name('guest.index');
         Route::view('/', 'layout.admin');
         Route::view('/register', 'auth.register')->name('registerAccount');
+        Route::get('/guest/room', 'GuestController@showRoomView')->name('guest.room.set');
+        Route::post('/guest/room', 'GuestController@setRoomNumberCookie');
     });
 });
 

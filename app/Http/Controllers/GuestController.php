@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use App\Guest;
 use App\Video;
 use App\Rating;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Cookie;
 
 class GuestController extends Controller
 {
@@ -22,12 +23,9 @@ class GuestController extends Controller
 
     public function indexVideo(Request $request)
     {
-        $this->getCurrentGuest($request);
+        $guest = $this->getCurrentGuest($request);
         return view('video.index', ['video' => Video::all()]);
     }
-
-
-
 
     /**
      * Show the form for creating a new resource.
@@ -156,10 +154,40 @@ class GuestController extends Controller
     {
         if ($request->hasCookie("ROOM_NUMBER")) {
             $roomNumber = $request->cookie("ROOM_NUMBER");
-            return Guest::where('roomNumber', $roomNumber);
+            return Guest::where('roomNumber', $roomNumber)->first();
         } else {
+            return redirect()->route('guest.room.set');
             echo "TODO: cookie not set. redirect to kamer selection page";
         }
+    }
 
+    public function setRoomNumberCookie(Request $request)
+    {
+        $request->validate(
+            [
+                'roomNumber' => 'required|integer',
+            ]
+        );
+
+        Cookie::queue('ROOM_NUMBER', $request->input('roomNumber'), 60 * 24 * 365);
+        return redirect()->route('guest.room.set');
+    }
+
+    public function showRoomView(Request $request)
+    {
+        $currentRoom = $request->cookie('ROOM_NUMBER');
+        $guestForRoom = null;
+
+        if ($currentRoom) {
+            $guestForRoom = Guest::where('roomNumber', $currentRoom)->first();
+        }
+
+        return view(
+            'guest.room',
+            [
+                'currentRoom' => $currentRoom,
+                'guestForRoom' => $guestForRoom
+            ]
+        );
     }
 }
