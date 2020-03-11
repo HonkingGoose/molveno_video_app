@@ -19,6 +19,7 @@ Route::middleware('auth')->group(function () {
         Route::post('guest/checkout', 'GuestController@teardown');
         Route::get('guest', 'GuestController@index')->name('guest.index');
         Route::view('/', 'layout.admin');
+        Route::view('/register', 'auth.register')->name('registerAccount');
     });
 });
 
