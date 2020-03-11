@@ -40,6 +40,7 @@
                                     {{-- <li class="active"><a href="/admin">Home</a></li> --}}
                                     <li><a href="{{ route('video.index') }}">Video index</a></li>
                                     <li><a href="{{ route('guest.index') }}">Guest index</a></li>
+                                    <li><a href="{{ route('guest.room.set') }}">Set roomnumber</a></li>
                                     <li><a href="/logout">Log out</a></li>
                                  <!-- Authentication Links -->
 
@@ -55,7 +56,7 @@
                                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                             @if(Auth::check())
                                             {{ Auth::user()->name }}
-                                            
+
                                             @endif
                                             <span class="caret"></span>
                                         </a>
