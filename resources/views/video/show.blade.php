@@ -46,7 +46,7 @@
     <script src="{{ asset('js/watch_video_js.js') }}"></script>
     <div id="controls">
       <button id="watchButton" class="buttonFancy">Watch</button>
-      <a class="buttonFancy" href="/guest/watch_video">Back to index</a>
+      <a id="doNotHover" href="/guest/watch_video"><button class="buttonFancy">Back to index</button></a>
       <button class="buttonFancy">Rate</button>
     </div>
     <div>
