@@ -29,7 +29,7 @@ Route::middleware('auth')->group(function () {
 // Guest routes
 Route::prefix('guest')->group(function () {
     Route::get('watch_video', 'GuestController@indexVideo');
-    Route::get('watch_video/{video}', 'VideoController@show');
+    Route::get('watch_video/{video}', 'VideoController@show')->name('watchVideo');
     Route::post('watch_video/{video}', 'GuestController@postRating');
 });
 Auth::routes();
