@@ -5,11 +5,10 @@
 This app uses the Laravel framework.
 You do not need to have Laravel installed globally.
 
-## About the docker files:
+## About using Docker with this repository:
 
-**WARNING: Do not use the docker files yet, this is work in progress and needs to be validated and checked!**
-
-This repo is currently being changed so that we can use Docker. However this work is not done yet, **do not use any docker commands on this repo!**
+You can use the `up.sh` shell script to create the docker container.
+There are helper shell scripts to use Composer to install dependencies, use php-artisan commands and phpunit commands.
 
 ## Prerequisites:
 
