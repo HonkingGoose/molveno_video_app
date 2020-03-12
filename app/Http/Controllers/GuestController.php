@@ -129,22 +129,34 @@ class GuestController extends Controller
         //     // the alternative.
         // }
     }
-
-    public function tearDown($input)
+    public function showCheckout(Request $request)
     {
-        $input = $input;
+        return view('guest.checkout');
+    }
+
+    public function showCheckoutSuccess(Request $request)
+    {
+        return view('guest.checkout.success');
+    }
+
+    public function tearDown(Request $request)
+    {
         // get hash
-        // TODO: get guest id from input
-        $hash = Guest::find(1)->generateUserHash();
+        // TODO: get guest id from cookie
+        $roomNumber = $request->input('roomNumber');
+        $hash = Guest::where('roomNumber', $roomNumber)->first()->generateUserHash();
         // compare database entries to hash
-        $dbHash = DB::table('ratings')->select('id')->where('user_hash', $hash)->get();
-        print_r($dbHash);
+        $dbHash = DB::table('ratings')
+                    ->select('id')
+                    ->where('user_hash', $hash)
+                    ->get();
+        //print_r($dbHash);
         // strip hashes from matching entries
         foreach ($dbHash as $f) {
             $id = $f->id;
             DB::table('ratings')
                 ->where('id', $id)
-                ->update(['user_hash' => 'removed after checkout']);
+                ->update(['user_hash' => null]);
         }
         // redirect to success page
         return redirect('guest/checkout/success');
@@ -157,7 +169,6 @@ class GuestController extends Controller
             return Guest::where('roomNumber', $roomNumber)->first();
         } else {
             return redirect()->route('guest.room.set');
-            echo "TODO: cookie not set. redirect to kamer selection page";
         }
     }
 

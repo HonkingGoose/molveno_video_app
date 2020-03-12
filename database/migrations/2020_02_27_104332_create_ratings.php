@@ -21,7 +21,7 @@ class CreateRatings extends Migration
                 $table->unsignedBigInteger('video_id');
                 $table->foreign('video_id')->references('id')->on('videos');
                 $table->smallInteger('score');
-                $table->string('user_hash');
+                $table->string('user_hash')->nullable();
                 $table->unique(['video_id', 'user_hash']);
                 // Uncomment the code below this line if the product owner says so.
                 // $table->unsignedBigInteger('user_id');
