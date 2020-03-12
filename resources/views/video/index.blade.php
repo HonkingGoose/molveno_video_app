@@ -15,7 +15,7 @@
             <tr class="videoCollectie">
 
                 @isset($video[$i])
-                    <td class="videoItem" tabindex="{{$i}}"><a href="watch_video/{{$video[$i]->id}}" >
+                    <td class="videoItem" tabindex="{{$i}}"><a href="{{ route('watchVideo', ['video' => $video[$i]->id]) }}" >
 
                         <img src="https://img.youtube.com/vi/{{$video[$i]->youtube_uid}}/0.jpg" alt="">
 
@@ -29,7 +29,7 @@
                     </td>
                 @endisset
                 @isset($video[$j])
-                    <td class="videoItem" tabindex="{{$j}}"><a href="watch_video/{{$video[$i]->id}}">
+                    <td class="videoItem" tabindex="{{$j}}"><a href="{{ route('watchVideo', ['video' => $video[$j]->id]) }}">
 
                         <img src="https://img.youtube.com/vi/{{$video[$j]->youtube_uid}}/0.jpg" alt="">
 
@@ -45,7 +45,7 @@
                 @isset($video[$k])
                     <td class="videoItem" tabindex="{{$k}}">
 
-                        <a href="watch_video/{{$video[$i]->id}}">
+                        <a href="{{ route('watchVideo', ['video' => $video[$k]->id]) }}">
 
                         <img src="https://img.youtube.com/vi/{{$video[$k]->youtube_uid}}/0.jpg" alt="">
 

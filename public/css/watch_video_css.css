@@ -1,6 +1,6 @@
 body {
     background-color: #343434;
-    color: white;    
+    color: white;
 }
 
 .flexCont {
@@ -27,7 +27,7 @@ body {
     padding: 10px;
 }
 
-.buttonFancy {
+.buttonFancy{
     border: 7px solid white;
     background-color: rgba(0,0,0,0.0);
     color: white;
@@ -44,4 +44,8 @@ body {
 
 .sideSubTitle {
     font-weight: bold;
+}
+
+#doNotHover {
+    color: white;
 }
