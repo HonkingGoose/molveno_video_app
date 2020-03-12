@@ -15,8 +15,10 @@
 Route::middleware('auth')->group(function () {
     Route::prefix('admin')->group(function () {
         Route::resource('video', 'VideoController');
+        Route::get('guest/checkout', 'GuestController@showCheckout')->name('guest.checkout');
         Route::post('video/update', 'VideoController@update')->name('video.update');
-        Route::post('guest/checkout', 'GuestController@teardown');
+        Route::post('guest/checkout', 'GuestController@tearDown');
+        Route::get('guest/checkout/success', 'GuestController@showCheckoutSuccess')->name('guest.checkout.success');
         Route::get('guest', 'GuestController@index')->name('guest.index');
         Route::view('/', 'layout.admin');
         Route::view('/register', 'auth.register')->name('registerAccount');
