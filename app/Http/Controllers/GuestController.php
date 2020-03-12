@@ -136,7 +136,7 @@ class GuestController extends Controller
 
     public function showCheckoutSuccess(Request $request)
     {
-        return view('guest.checkout.success');
+        return view('guest.checkoutSuccess');
     }
 
     public function tearDown(Request $request)
@@ -159,7 +159,7 @@ class GuestController extends Controller
                 ->update(['user_hash' => null]);
         }
         // redirect to success page
-        return redirect('guest/checkout/success');
+        return redirect()->route('guest.checkout.success');
     }
 
     private function getCurrentGuest(Request $request)
