@@ -14,6 +14,9 @@ fi
 echo -e "\nSTEP: cleaning up previous database data directory"
 sudo rm -rfv "run/var/*"
 
+echo -e "\nSTEP: clean up previous database data directory without sudo rights"
+rm -rfv "run/var/*"
+
 echo -e "\nSTEP: cleaning up previous docker-compose containers"
 docker-compose down
 
