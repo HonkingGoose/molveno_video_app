@@ -114,12 +114,14 @@ class GuestController extends Controller
         $rating = new Rating;
         $rating->video_id = intval($request->video_id);
         $rating->score = intval($request->score);
-        $rating->user_hash = \App\Guest::find(1)->generateUserHash();
+        $rating->user_hash = \App\Guest::find($currentGuest->id)->generateUserHash();
 
         try {
             $ratingSucceed = $rating->save();
         } catch (\Exception $e) {
             // do logging? or ignore? whatever... you decide.
+            var_dump($e);
+            exit;
         }
 
         return response()->json(["succeed" => $ratingSucceed]);

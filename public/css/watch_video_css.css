@@ -49,3 +49,11 @@ body {
 #doNotHover {
     color: white;
 }
+
+#ratingsDiv {
+    display:hidden;
+}
+
+.show {
+    display: initial;
+}
