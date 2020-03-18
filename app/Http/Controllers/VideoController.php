@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Video;
 use Datatables;
+use Illuminate\Http\Response;
+use Illuminate\View\View;
 use Validator;
 
 class VideoController extends Controller
@@ -12,20 +17,21 @@ class VideoController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Application|Factory|View
      */
     public function index(Request $request)
     {
         if ($request->ajax()) {
             $data = Video::latest()->get();
             return DataTables::of($data)
-                    ->addColumn('action', function ($data) {
-                        $button = '<button type="button" name="edit" id="'.$data->id.'" class="edit btn btn-primary btn-sm">Edit</button>';
-                        $button .= '&nbsp;&nbsp;&nbsp;<button type="button" name="edit" id="'.$data->id.'" class="delete btn btn-danger btn-sm">Delete</button>';
-                        return $button;
-                    })
-                    ->rawColumns(['action'])
-                    ->make(true);
+                ->addColumn('action', function ($data) {
+                    $button = '<button type="button" name="edit" id="' . $data->id . '" class="edit btn btn-primary btn-sm">Edit</button>';
+                    $button .= '&nbsp;&nbsp;&nbsp;<button type="button" name="edit" id="' . $data->id . '" class="delete btn btn-danger btn-sm">Delete</button>';
+                    return $button;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
         }
         return view('admin_video.index');
     }
@@ -33,7 +39,7 @@ class VideoController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Application|Factory|View
      */
     public function create()
     {
@@ -45,8 +51,8 @@ class VideoController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return JsonResponse
      */
     public function store(Request $request)
     {
@@ -54,7 +60,7 @@ class VideoController extends Controller
             'youtube_uid' => 'required',
             'title' => 'required',
             'description' => 'required',
-            'category' =>  'required',
+            'category' => 'required',
 
         ];
 
@@ -70,8 +76,8 @@ class VideoController extends Controller
         $video->description = $request->input('description');
         $video->category = $request->input('category');
         $video->youtube_uid = $request->input('youtube_uid');
-        $video->suitable_for_kids = (bool) $request->input('suitable_for_kids', 0);
-        $video->available_to_watch = (bool) $request->input('available_to_watch', 0);
+        $video->suitable_for_kids = (bool)$request->input('suitable_for_kids', 0);
+        $video->available_to_watch = (bool)$request->input('available_to_watch', 0);
         $video->created_by = "henk";
 
         if ($video->save()) {
@@ -84,8 +90,8 @@ class VideoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Video $video
+     * @return Application|Factory|View
      */
     public function show(Video $video)
     {
@@ -95,8 +101,8 @@ class VideoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return JsonResponse
      */
     public function edit($id)
     {
@@ -109,9 +115,9 @@ class VideoController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  Video  $video
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Video $video
+     * @return JsonResponse
      */
     public function update(Request $request, Video $video)
     {
@@ -119,7 +125,7 @@ class VideoController extends Controller
             'youtube_uid' => 'required',
             'title' => 'required',
             'description' => 'required',
-            'category' =>  'required',
+            'category' => 'required',
         ];
 
         $error = Validator::make($request->all(), $rules);
@@ -133,8 +139,8 @@ class VideoController extends Controller
         $video->description = $request->input('description');
         $video->category = $request->input('category');
         $video->youtube_uid = $request->input('youtube_uid');
-        $video->suitable_for_kids = (bool) $request->input('suitable_for_kids', 0);
-        $video->available_to_watch = (bool) $request->input('available_to_watch', 0);
+        $video->suitable_for_kids = (bool)$request->input('suitable_for_kids', 0);
+        $video->available_to_watch = (bool)$request->input('available_to_watch', 0);
         $video->created_by = "henk";
 
         if ($video->save()) {
@@ -147,8 +153,8 @@ class VideoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return void
      */
     public function destroy($id)
     {
