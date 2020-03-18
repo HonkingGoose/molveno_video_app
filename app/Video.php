@@ -17,6 +17,11 @@ class Video extends Model
         return $this->hasMany('App\Rating');
     }
 
+    public function categories()
+    {
+        return $this->belongsTo(App\Category::class);
+    }
+
     /**
      * Calculate the average rating from the videos in the database.
      * @return float $output

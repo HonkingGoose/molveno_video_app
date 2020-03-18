@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Video;
+use App\Category;
 
 class VideosTableSeeder extends Seeder
 {
@@ -12,12 +14,28 @@ class VideosTableSeeder extends Seeder
     public function run()
     {
 
-        //for now, we can use this to insert a couple of entries in the database
-
-        //\App\Video::truncate();
+       //Thumbnail watch_video factory
 
         (new Faker\Generator)->seed(123);
 
         factory(App\Video::class, 19)->create();
+
+
+        //Video Category seeder
+
+        $categories = [
+            ["name" => "hotelActivities" ],
+            ["name" => "outdoorActivities"],
+            ["name" => "generalInfoHotel" ],
+        ];
+
+        foreach ($categories as $categoryData) {
+            $category = new Video();
+            $category->name = $categoryData['name'];
+            $category->categories()->associate($categoryData['name']);
+            $category->save();
+        }
     }
+
+
 }
