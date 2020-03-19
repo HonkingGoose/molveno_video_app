@@ -17,9 +17,11 @@
     <div id="player"></div>
     <script>
       var config = {
-        youtubeId: '{{ $video->youtube_uid }}'
+        youtubeId: '{{ $video->youtube_uid }}',
+        score: '{{ $score }}'
       }
 
+      
       function performRating(event) {
           //console.log(event);
           // event.target --> <select> html node
@@ -82,5 +84,7 @@
   document.getElementById('watchButton').addEventListener("click", function(event) {
   startstop(event);
   });
+
+  document.getElementById('score').selectedIndex = config.score - 1;
 </script>
 @endsection
