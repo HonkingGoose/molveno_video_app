@@ -7,6 +7,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Video;
+use App\Category;
 use Datatables;
 use Illuminate\Http\Response;
 use Illuminate\View\View;
@@ -43,9 +44,7 @@ class VideoController extends Controller
      */
     public function create()
     {
-        $categories = ['cat1', 'cat2', 'cat3'];
-
-        return view('admin_video.create', ['video' => Video::all(), 'categories' => $categories]);
+        return view('admin_video.create', ['categories' => Category::all()]);
     }
 
     /**
@@ -70,11 +69,18 @@ class VideoController extends Controller
             return response()->json(['errors' => $error->errors()->all()]);
         }
 
+        $category = Category::find($request->input('category'));
+
+        if(!$category){
+            echo 'Category not valid!';
+            exit;
+        }
 
         $video = new Video();
         $video->title = $request->input('title');
         $video->description = $request->input('description');
-        $video->category = $request->input('category');
+        // $video->category = $request->input('category');
+        $video->category()->associate($category);
         $video->youtube_uid = $request->input('youtube_uid');
         $video->suitable_for_kids = (bool)$request->input('suitable_for_kids', 0);
         $video->available_to_watch = (bool)$request->input('available_to_watch', 0);
@@ -107,8 +113,9 @@ class VideoController extends Controller
     public function edit($id)
     {
         if (request()->ajax()) {
+            $categories = Category::all();
             $data = Video::findOrFail($id);
-            return response()->json(['result' => $data]);
+            return response()->json(['result' => $data, 'categories' => $categories]);
         }
     }
 
@@ -134,10 +141,14 @@ class VideoController extends Controller
             return response()->json(['errors' => $error->errors()->all()]);
         }
 
+
+
+
         $video = Video::find($request->input('id'));
         $video->title = $request->input('title');
         $video->description = $request->input('description');
-        $video->category = $request->input('category');
+        // $video->category = $request->input('category');
+        $video->category()->associate(Category::find($request->input('category')));
         $video->youtube_uid = $request->input('youtube_uid');
         $video->suitable_for_kids = (bool)$request->input('suitable_for_kids', 0);
         $video->available_to_watch = (bool)$request->input('available_to_watch', 0);

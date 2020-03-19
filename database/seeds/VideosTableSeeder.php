@@ -21,20 +21,7 @@ class VideosTableSeeder extends Seeder
         factory(App\Video::class, 19)->create();
 
 
-        //Video Category seeder
-
-        $categories = [
-            ["name" => "hotelActivities" ],
-            ["name" => "outdoorActivities"],
-            ["name" => "generalInfoHotel" ],
-        ];
-
-        foreach ($categories as $categoryData) {
-            $category = new Video();
-            $category->name = $categoryData['name'];
-            $category->categories()->associate($categoryData['name']);
-            $category->save();
-        }
+       
     }
 
 

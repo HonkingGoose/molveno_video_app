@@ -13,15 +13,15 @@ class CategoriesTableSeeder extends Seeder
     public function run()
     {
         $categories = [
-            ["name" => "hotelActivities" ],
-            ["name" => "outdoorActivities"],
-            ["name" => "generalInfoHotel" ],
+            ["name" => "hotel activities" ],
+            ["name" => "outdoor activities"],
+            ["name" => "general info" ],
         ];
 
 
         foreach ($categories as $category) {
             $cat = new Category();
-            $cat->name = $category;
+            $cat->name = $category["name"];
             $cat->save();
         }
     }

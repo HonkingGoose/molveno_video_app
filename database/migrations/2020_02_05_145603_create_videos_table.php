@@ -19,13 +19,15 @@ class CreateVideosTable extends Migration
             $table->string('youtube_uid')/*->unique()*/; //unique for testing commented
             $table->string('title');
             $table->string('description');
-            $table->unsignedBigInteger('category_id');
-            $table->foreign('category_id')->references('id')->on('categories');
+            $table->string('category');
             $table->smallInteger('reviews')->default(0);
             $table->boolean('available_to_watch');
             $table->boolean('suitable_for_kids');
             $table->string('created_by');
         });
+
+
+       
     }
 
     /**

@@ -18,6 +18,12 @@ class CreateCategoriesTable extends Migration
             $table->string('name')->unique();
             $table->timestamps();
         });
+
+        Schema::table('videos', function (Blueprint $table) {
+            $table->dropColumn('category');
+            $table->unsignedBigInteger('category_id');
+            $table->foreign('category_id')->references('id')->on('categories');
+        });
     }
 
     /**

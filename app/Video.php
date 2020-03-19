@@ -17,7 +17,7 @@ class Video extends Model
         return $this->hasMany('App\Rating');
     }
 
-    public function categories()
+    public function category()
     {
         return $this->belongsTo(App\Category::class);
     }

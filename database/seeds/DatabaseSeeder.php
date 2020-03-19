@@ -12,10 +12,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->call(CategoriesTableSeeder::class);
         $this->call(VideosTableSeeder::class);
         $this->call(GuestSeeder::class);
         $this->call(AdminUserSeeder::class);
         $this->call(RatingsTableSeeder::class);
+
 
         if (App::environment('local')) {
             $this->call(DevUserSeeder::class);
