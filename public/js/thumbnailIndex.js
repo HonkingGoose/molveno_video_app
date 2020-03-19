@@ -1,7 +1,7 @@
 
 $(document).ready(function(){
 
-    let currCell = $('td').first().focus();
+    // let currCell = $('td').first().focus();
     // let link = $("a").first();
     let editing = false;
 
@@ -52,7 +52,7 @@ $(document).ready(function(){
 
 })
 
-$("body").click(function () {
+$("table").click(function () {
 
     let currCell = $("td").first().focus();
 })

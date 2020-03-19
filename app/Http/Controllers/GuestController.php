@@ -23,9 +23,10 @@ class GuestController extends Controller
 
     public function indexVideo(Request $request)
     {
-        $searchTerm = $request->query('query');
+        $search = $request->query('search');
         $guest = $this->getCurrentGuest($request);
-        return view('video.index', ['video' => Video::all()]);
+
+        return view('video.index', ['video' => Video::all(), 'search' => $search]);
     }
 
     /**
