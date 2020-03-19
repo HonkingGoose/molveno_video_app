@@ -201,4 +201,13 @@ class GuestController extends Controller
             ]
         );
     }
+
+    public function processSearchForm(Request $request)
+    {
+        $searchTerm = $request->query('query');
+        // Use searchTerm to search for videos with name $searchterm.
+        // If no video found: display message: "No video found".
+        // For each video found, put in array of found videos.
+        // From array, pick videos to show in 3x3 grid.
+    }
 }
