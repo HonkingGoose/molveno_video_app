@@ -51,7 +51,7 @@ body {
 }
 
 #ratingsDiv {
-    display:hidden;
+    display:none;
 }
 
 .show {

@@ -50,7 +50,7 @@
       }
 
       function showRatingsDiv() {
-        document.getElementById('ratingsDiv').addClass('show');
+        document.getElementById('ratingsDiv').style.display="initial";
       }
     </script>
     <script src="{{ asset('js/watch_video_js.js') }}"></script>
