@@ -21,7 +21,7 @@ table {
     justify-content: center;
 }
 
-.videoCollectie {
+.videoCollection {
     display:flex;
     flex-wrap: wrap;
 }
