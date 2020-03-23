@@ -25,7 +25,6 @@ class GuestController extends Controller
     {
         $search = $request->query('search');
         $guest = $this->getCurrentGuest($request);
-        // TODO: Figure out how to display the result of the query.
         $db_query = DB::table('videos')
             ->where('title', ' like', '%'.$search.'%')
             ->orWhere('description', 'like', '%'.$search.'%')
@@ -33,6 +32,7 @@ class GuestController extends Controller
         foreach($db_query as $result){
             print_r($result);
         }
+        // TODO: Make if/else statement: if search !empty, return search, else return all.
         return view('video.index', ['video' => Video::all(), 'search' => $search]);
     }
 
