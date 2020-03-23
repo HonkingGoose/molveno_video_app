@@ -25,12 +25,14 @@ class GuestController extends Controller
     {
         $search = $request->query('search');
         $guest = $this->getCurrentGuest($request);
-        // TODO: Figure out how to insert variables after the 'like' operator.
         // TODO: Figure out how to display the result of the query.
         $db_query = DB::table('videos')
-            ->where('title', ' like', '%input_variable_here%')
-            ->orWhere('description', 'like', '%input_second_variable_here%');
-
+            ->where('title', ' like', '%'.$search.'%')
+            ->orWhere('description', 'like', '%'.$search.'%')
+            ->get();
+        foreach($db_query as $result){
+            print_r($result);
+        }
         return view('video.index', ['video' => Video::all(), 'search' => $search]);
     }
 
