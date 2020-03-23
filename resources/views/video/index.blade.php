@@ -15,7 +15,7 @@
 
 <div>
     <table>
-        @for ($i = 0, $j = 1, $k = 2; $i < sizeOf($video); $i +=3, $j +=3, $k +=3) <tr class="videoCollection">
+        @for ($i = 2, $j = 3, $k = 4; $i < sizeOf($video); $i +=3, $j +=3, $k +=3) <tr class="videoCollection">
 
             @isset($video[$i])
             <td class="videoItem" tabindex="{{$i}}"><a href="{{ route('watchVideo', ['video' => $video[$i]->id]) }}">
