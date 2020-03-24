@@ -14,7 +14,7 @@
         <!-- Fonts -->
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     </head>
     <body>
@@ -59,7 +59,7 @@
                                             {{ Auth::user()->name }}
 
                                             @endif
-                                            <span class="caret"></span>
+                                            <span><i class="material-icons" style="font-size: 15px;">contacts</i></span>
                                         </a>
 
                                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">

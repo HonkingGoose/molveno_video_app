@@ -29,7 +29,7 @@ $(document).ready(function(){
         name: 'description'
         },
         {
-        data: 'category',
+        data: 'category_id',
         name: 'category'
         },
         {
@@ -74,7 +74,7 @@ $(document).ready(function(){
         action_url = "/admin/video/";
     }
 
-    if($('#action').val() === 'Edit'){
+    if($('#action').val() === 'OK'){
         action_url = "/admin/video/update/";
     }
 
@@ -111,13 +111,13 @@ $(document).on('click', '.edit', function(){
             $('#youtube_uid').val(data.result.youtube_uid);
             $('#title').val(data.result.title);
             $('#description').val(data.result.description);
-            $('#category').val(data.result.category);
+            $('#category').val(data.result.category_id);
             $('#suitable_for_kids').prop('checked', !!data.result.suitable_for_kids);
             $('#available_to_watch').prop('checked', !!data.result.available_to_watch);
             $('#hidden_id').val(id);
             $('.modal-title').text('Edit Record');
-            $('#action_button').val('Edit');
-            $('#action').val('Edit');
+            $('#action_button').val('OK');
+            $('#action').val('OK');
             $('#formModal').modal('show');
         }
     })
