@@ -7,6 +7,8 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Video;
+use App\Guest;
+use App\Rating;
 use Datatables;
 use Illuminate\Http\Response;
 use Illuminate\View\View;
@@ -89,13 +91,29 @@ class VideoController extends Controller
 
     /**
      * Display the specified resource.
-     *
+     * 
+     * @param Request $request
      * @param Video $video
      * @return Application|Factory|View
      */
-    public function show(Video $video)
+    public function show(Request $request, Video $video)
     {
-        return view('video.show', ['video' => $video]);
+        $roomNumber = $request->cookie('ROOM_NUMBER');
+        if(!$roomNumber){
+            return view('guest.room.set');
+        }
+        $guest = Guest::where('roomNumber', $roomNumber)->first();
+        $rating = Rating::findByVideoIdAndUserHash(
+            $video->id,
+            $guest->generateUserHash()
+        );
+        if($rating){
+            $score = $rating->score;
+        } else {
+            $score = 3;
+        }
+        
+        return view('video.show', ['video' => $video, 'score' => $score]);
     }
 
     /**

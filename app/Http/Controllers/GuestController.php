@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Guest;
 use App\Video;
 use App\Rating;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Cookie;
@@ -96,39 +97,40 @@ class GuestController extends Controller
     /**
      * POST method to post rating
      *
-     * @param int $input
-     * return
+     * @param Request $request
+     * @return JsonResponse
      */
 
     public function postRating(Request $request)
     {
         $currentGuest = $this->getCurrentGuest($request);
 
-        // pak molveno room number uit request
-        // zoek huidige klant op bij room number
-        // gebruik deze klant voor het plaatsen van rating
-
-        $ratingSucceed = false;
-        // var_dump(intval($request->video_id));
-
-        $rating = new Rating;
-        $rating->video_id = intval($request->video_id);
-        $rating->score = intval($request->score);
-        $rating->user_hash = \App\Guest::find(1)->generateUserHash();
-
-        try {
-            $ratingSucceed = $rating->save();
-        } catch (\Exception $e) {
-            // do logging? or ignore? whatever... you decide.
+        if (!$currentGuest) {
+            return response()->json(["error" => "ROOM_NUMBER cookie is not set"]);
         }
 
-        return response()->json(["succeed" => $ratingSucceed]);
-        // if ($ratingSucceed) {
-        //     // do whatever you need to do when a rating succeeds
-        // } else {
-        //     // the alternative.
-        // }
+        $rating = Rating::findByVideoIdAndUserHash(
+            $request->video_id,
+            $currentGuest->generateUserHash()
+        );
+
+        if (!$rating) {
+            $rating = new Rating();
+        }
+
+        $rating->video_id = intval($request->video_id);
+        $rating->score = intval($request->score);
+        $rating->user_hash = $currentGuest->generateUserHash();
+
+        try {
+            $rating->save();
+        } catch (\Exception $e) {
+            return response()->json(["error" => "Error when saving rating."]);
+        }
+
+        return response()->json(["succeed" => true]);
     }
+
     public function showCheckout(Request $request)
     {
         return view('guest.checkout');
@@ -162,14 +164,18 @@ class GuestController extends Controller
         return redirect()->route('guest.checkout.success');
     }
 
+    /**
+     * @param Request $request
+     * @return |null
+     */
     private function getCurrentGuest(Request $request)
     {
         if ($request->hasCookie("ROOM_NUMBER")) {
             $roomNumber = $request->cookie("ROOM_NUMBER");
             return Guest::where('roomNumber', $roomNumber)->first();
-        } else {
-            return redirect()->route('guest.room.set');
         }
+
+        return null;
     }
 
     public function setRoomNumberCookie(Request $request)
