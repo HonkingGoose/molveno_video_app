@@ -164,6 +164,10 @@ class GuestController extends Controller
         return redirect()->route('guest.checkout.success');
     }
 
+    /**
+     * @param Request $request
+     * @return |null
+     */
     private function getCurrentGuest(Request $request)
     {
         if ($request->hasCookie("ROOM_NUMBER")) {
