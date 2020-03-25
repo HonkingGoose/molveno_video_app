@@ -32,9 +32,8 @@ table {
 
 .videoItem {
   display: block;
-  margin: calc(10% / 6);
   background-color: #f8f4f4;
-  border-radius: 5px;
+  border-radius: 0.3125rem;
   padding: 1vw;
 }
 
