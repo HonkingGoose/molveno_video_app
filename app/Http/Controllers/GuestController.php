@@ -37,7 +37,7 @@ class GuestController extends Controller
 
         $videos = $query->get();
 
-        return view('video.index', ['video' => $videos, 'search' => $search]);
+        return view('video.index', ['videos' => $videos, 'search' => $search]);
     }
 
     /**
