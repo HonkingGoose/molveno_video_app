@@ -29,16 +29,20 @@ class GuestController extends Controller
             ->where('title', ' like', '%' . $search . '%')
             ->orWhere('description', 'like', '%' . $search . '%')
             ->get();
+
+        // TODO: This is a debug foreach, remove after feature is done.
         foreach ($db_query as $result) {
             print_r($result);
         }
 
-        // TODO: Make if/else statement: if search !empty, return search, else return all.
-        if (!$search) {
+        // TODO: Make if/else statement: if search is null return all videos, else only return matching videos.
+        if (is_null($search) === true) {
             return view('video.index', ['video' => Video::all(), 'search' => $search]);
         } else {
             return view('video.index', ['video' => Video::all(), 'search' => $search]);
         }
+
+        // TODO: Refactor if else statement to remove duplication.
 
     }
 
