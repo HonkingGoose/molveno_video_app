@@ -25,55 +25,61 @@
         {{-- TODO: decide if offset should be in its own variable for clarity.
              TODO: Check if the display logic actually only shows videos which are set to available?
              TODO: remove duplication in the display logic we're using basically the same code 3 time. --}}
-        @for ($firstItemInRow = 2, $secondItemInRow = 3, $thirdItemInRow = 4; $firstItemInRow < count($video); $firstItemInRow +=3, $secondItemInRow +=3, $thirdItemInRow +=3) <tr class="videoCollection">
+        @for (  $firstItemInRow = 2, $secondItemInRow = 3, $thirdItemInRow = 4;
+                $firstItemInRow < count($video);
+                $firstItemInRow +=3, $secondItemInRow +=3, $thirdItemInRow +=3)
+            <tr class="videoCollection">
 
-            @isset($video[$firstItemInRow])
-            <td class="videoItem" tabindex="{{$firstItemInRow}}"><a href="{{ route('watchVideo', ['video' => $video[$firstItemInRow]->id]) }}">
+                @isset($video[$firstItemInRow])
+                    <td class="videoItem" tabindex="{{$firstItemInRow}}"><a
+                            href="{{ route('watchVideo', ['video' => $video[$firstItemInRow]->id]) }}">
 
-                    <img src="https://img.youtube.com/vi/{{$video[$firstItemInRow]->youtube_uid}}/0.jpg" alt="">
+                            <img src="https://img.youtube.com/vi/{{$video[$firstItemInRow]->youtube_uid}}/0.jpg" alt="">
 
-                    <p class="videoTitle">
-                        {{$video[$firstItemInRow]->title}}
-                    </p>
-                    <p class="videoDescription">
-                        {{$video[$firstItemInRow]->description}}
-                    </p>
-                </a>
-            </td>
-            @endisset
-            @isset($video[$secondItemInRow])
-            <td class="videoItem" tabindex="{{$secondItemInRow}}"><a href="{{ route('watchVideo', ['video' => $video[$secondItemInRow]->id]) }}">
+                            <p class="videoTitle">
+                                {{$video[$firstItemInRow]->title}}
+                            </p>
+                            <p class="videoDescription">
+                                {{$video[$firstItemInRow]->description}}
+                            </p>
+                        </a>
+                    </td>
+                @endisset
+                @isset($video[$secondItemInRow])
+                    <td class="videoItem" tabindex="{{$secondItemInRow}}"><a
+                            href="{{ route('watchVideo', ['video' => $video[$secondItemInRow]->id]) }}">
 
-                    <img src="https://img.youtube.com/vi/{{$video[$secondItemInRow]->youtube_uid}}/0.jpg" alt="">
+                            <img src="https://img.youtube.com/vi/{{$video[$secondItemInRow]->youtube_uid}}/0.jpg"
+                                 alt="">
 
-                    <p class="videoTitle">
-                        {{$video[$secondItemInRow]->title}}
-                    </p>
-                    <p class="videoDescription">
-                        {{$video[$secondItemInRow]->description}}
-                    </p>
-                </a>
-            </td>
-            @endisset
-            @isset($video[$thirdItemInRow])
-            <td class="videoItem" tabindex="{{$thirdItemInRow}}">
+                            <p class="videoTitle">
+                                {{$video[$secondItemInRow]->title}}
+                            </p>
+                            <p class="videoDescription">
+                                {{$video[$secondItemInRow]->description}}
+                            </p>
+                        </a>
+                    </td>
+                @endisset
+                @isset($video[$thirdItemInRow])
+                    <td class="videoItem" tabindex="{{$thirdItemInRow}}">
 
-                <a href="{{ route('watchVideo', ['video' => $video[$thirdItemInRow]->id]) }}">
+                        <a href="{{ route('watchVideo', ['video' => $video[$thirdItemInRow]->id]) }}">
 
-                    <img src="https://img.youtube.com/vi/{{$video[$thirdItemInRow]->youtube_uid}}/0.jpg" alt="">
+                            <img src="https://img.youtube.com/vi/{{$video[$thirdItemInRow]->youtube_uid}}/0.jpg" alt="">
 
-                    <p class="videoTitle">
-                        {{$video[$thirdItemInRow]->title}}
-                    </p>
-                    <p class="videoDescription">
-                        {{$video[$thirdItemInRow]->description}}
-                    </p>
-                </a>
+                            <p class="videoTitle">
+                                {{$video[$thirdItemInRow]->title}}
+                            </p>
+                            <p class="videoDescription">
+                                {{$video[$thirdItemInRow]->description}}
+                            </p>
+                        </a>
 
-            </td>
-            @endisset
+                    </td>
+                @endisset
             </tr>
-            @endfor
+        @endfor
     </table>
 </div>
 @endsection
