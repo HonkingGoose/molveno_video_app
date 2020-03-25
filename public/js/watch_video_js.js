@@ -105,7 +105,7 @@ function performRating(event) {
         document.getElementById('scoreMessage').innerHTML = 'Your rating has been posted!';
     }).catch(function (err) {
         //console.log(err);
-        document.getElementById('scoreMessage').innerHTML = 'Something went wrong with posting your rating';
+        document.getElementById('scoreMessage').innerHTML = 'Something went wrong with posting your rating.';
     });
 }
 
