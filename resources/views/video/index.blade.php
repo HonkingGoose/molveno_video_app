@@ -8,7 +8,7 @@
         @csrf
         <div class="form-group ">
             <input class="form-control" placeholder="Search for your favorite video" autofocus tabindex="1"
-                type="search" id="search" name="search" value="{{ $search }}">
+                   type="search" id="search" name="search" value="{{ $search }}">
         </div>
     </form>
 </div>
