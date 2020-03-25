@@ -38,8 +38,8 @@ table {
   padding: 1vw;
 }
 
-.videoItem:hover > a {
-  /* background-color: blue; */
+.videoItem:hover{
+  background-color: lightskyblue;
   color: black;
 }
 
