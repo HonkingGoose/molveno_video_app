@@ -29,7 +29,7 @@ $(document).ready(function(){
         name: 'description'
         },
         {
-        data: 'category_id',
+        data: 'category.name',
         name: 'category'
         },
         {

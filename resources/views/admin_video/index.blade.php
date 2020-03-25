@@ -74,11 +74,9 @@
                                     <div class="col-md-8">
                                         <select multiple class="form-control" name="category" id="category">
                                             <option value="">--Please choose an option--</option>
-                                            {{-- @foreach ($categories as $category) --}}
-                                            <option value="1">Hotel activities</option>
-                                            <option value="2">Outdoor activities</option>
-                                            <option value="3">General information</option>
-                                            {{-- @endforeach --}}
+                                            @foreach ($categories as $category)
+                                            <option value="{{$category->id}}">{{$category->name}}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                             </div>

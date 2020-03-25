@@ -25,6 +25,7 @@ class VideoController extends Controller
     {
         if ($request->ajax()) {
             $data = Video::latest()->get();
+            $data->loadMissing('category');
             return DataTables::of($data)
                 ->addColumn('action', function ($data) {
                     $button = '<button type="button" name="edit" id="' . $data->id . '" class="edit btn btn-primary btn-sm">Edit</button>';
@@ -34,7 +35,8 @@ class VideoController extends Controller
                 ->rawColumns(['action'])
                 ->make(true);
         }
-        return view('admin_video.index');
+        $categories = Category::all();
+        return view('admin_video.index', ['categories' => $categories]);
     }
 
     /**
