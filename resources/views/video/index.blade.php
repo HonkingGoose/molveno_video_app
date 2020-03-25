@@ -14,6 +14,10 @@
 </div>
 
 <div>
+    @foreach ($video as $v)
+        {{ $v->title }}<br><br>
+        {{ $v->description }}<br><br>
+    @endforeach
     <table>
         {{-- We offset the first item in the grid because the search bar has tabindex 1. --}}
         {{-- TODO: rename variables to human readable variables.
