@@ -107,7 +107,12 @@ class VideoController extends Controller
             $video->id,
             $guest->generateUserHash()
         );
-        $score = $rating->score;
+        if($rating){
+            $score = $rating->score;
+        } else {
+            $score = 3;
+        }
+        
         return view('video.show', ['video' => $video, 'score' => $score]);
     }
 
