@@ -23,28 +23,20 @@ class GuestController extends Controller
 
     public function indexVideo(Request $request)
     {
+        $videos = [];
+
         $search = $request->query('search');
         $guest = $this->getCurrentGuest($request);
-        $db_query = DB::table('videos')
-            ->where('title', ' like', '%' . $search . '%')
-            ->orWhere('description', 'like', '%' . $search . '%')
-            ->get();
+        $query = DB::table('videos');
 
-        // TODO: This is a debug foreach, remove after feature is done.
-        foreach ($db_query as $result) {
-            print_r($result);
+        if ($search) {
+            $query->where('title', 'like', '%' . $search . '%');
+            $query->orWhere('description', 'like', '%' . $search . '%');
         }
 
-        // TODO: Make if/else statement: if search is null return all videos, else only return matching videos.
-        // TODO: Refactor if else statement to remove duplication.
-        // TODO: cleanup code styling.
-        $videos = $db_query;
-        if (is_null($search) === true) {
-            return view('video.index', ['video' => Video::all(), 'search' => $search]);
-        } else {
-            return view('video.index', ['video' => Video::all(), 'search' => $search]);
-        }
+        $videos = $query->get();
 
+        return view('video.index', ['video' => $videos, 'search' => $search]);
     }
 
     /**
@@ -221,5 +213,4 @@ class GuestController extends Controller
             ]
         );
     }
-
 }
