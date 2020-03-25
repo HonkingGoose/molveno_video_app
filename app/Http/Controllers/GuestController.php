@@ -38,6 +38,7 @@ class GuestController extends Controller
         // TODO: Make if/else statement: if search is null return all videos, else only return matching videos.
         // TODO: Refactor if else statement to remove duplication.
         // TODO: cleanup code styling.
+        $videos = $db_query;
         if (is_null($search) === true) {
             return view('video.index', ['video' => Video::all(), 'search' => $search]);
         } else {
