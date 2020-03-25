@@ -14,58 +14,59 @@
 </div>
 
 <div>
+    {{-- TODO: Remove debug loop --}}
     @foreach ($video as $v)
         {{ $v->title }}<br><br>
         {{ $v->description }}<br><br>
     @endforeach
+
     <table>
         {{-- We offset the first item in the grid because the search bar has tabindex 1. --}}
-        {{-- TODO: rename variables to human readable variables.
-             TODO: decide if offset should be in its own variable for clarity.
+        {{-- TODO: decide if offset should be in its own variable for clarity.
              TODO: Check if the display logic actually only shows videos which are set to available?
              TODO: remove duplication in the display logic we're using basically the same code 3 time. --}}
-        @for ($i = 2, $j = 3, $k = 4; $i < count($video); $i +=3, $j +=3, $k +=3) <tr class="videoCollection">
+        @for ($firstItemInRow = 2, $secondItemInRow = 3, $thirdItemInRow = 4; $firstItemInRow < count($video); $firstItemInRow +=3, $secondItemInRow +=3, $thirdItemInRow +=3) <tr class="videoCollection">
 
-            @isset($video[$i])
-            <td class="videoItem" tabindex="{{$i}}"><a href="{{ route('watchVideo', ['video' => $video[$i]->id]) }}">
+            @isset($video[$firstItemInRow])
+            <td class="videoItem" tabindex="{{$firstItemInRow}}"><a href="{{ route('watchVideo', ['video' => $video[$firstItemInRow]->id]) }}">
 
-                    <img src="https://img.youtube.com/vi/{{$video[$i]->youtube_uid}}/0.jpg" alt="">
+                    <img src="https://img.youtube.com/vi/{{$video[$firstItemInRow]->youtube_uid}}/0.jpg" alt="">
 
                     <p class="videoTitle">
-                        {{$video[$i]->title}}
+                        {{$video[$firstItemInRow]->title}}
                     </p>
                     <p class="videoDescription">
-                        {{$video[$i]->description}}
+                        {{$video[$firstItemInRow]->description}}
                     </p>
                 </a>
             </td>
             @endisset
-            @isset($video[$j])
-            <td class="videoItem" tabindex="{{$j}}"><a href="{{ route('watchVideo', ['video' => $video[$j]->id]) }}">
+            @isset($video[$secondItemInRow])
+            <td class="videoItem" tabindex="{{$secondItemInRow}}"><a href="{{ route('watchVideo', ['video' => $video[$secondItemInRow]->id]) }}">
 
-                    <img src="https://img.youtube.com/vi/{{$video[$j]->youtube_uid}}/0.jpg" alt="">
+                    <img src="https://img.youtube.com/vi/{{$video[$secondItemInRow]->youtube_uid}}/0.jpg" alt="">
 
                     <p class="videoTitle">
-                        {{$video[$j]->title}}
+                        {{$video[$secondItemInRow]->title}}
                     </p>
                     <p class="videoDescription">
-                        {{$video[$j]->description}}
+                        {{$video[$secondItemInRow]->description}}
                     </p>
                 </a>
             </td>
             @endisset
-            @isset($video[$k])
-            <td class="videoItem" tabindex="{{$k}}">
+            @isset($video[$thirdItemInRow])
+            <td class="videoItem" tabindex="{{$thirdItemInRow}}">
 
-                <a href="{{ route('watchVideo', ['video' => $video[$k]->id]) }}">
+                <a href="{{ route('watchVideo', ['video' => $video[$thirdItemInRow]->id]) }}">
 
-                    <img src="https://img.youtube.com/vi/{{$video[$k]->youtube_uid}}/0.jpg" alt="">
+                    <img src="https://img.youtube.com/vi/{{$video[$thirdItemInRow]->youtube_uid}}/0.jpg" alt="">
 
                     <p class="videoTitle">
-                        {{$video[$k]->title}}
+                        {{$video[$thirdItemInRow]->title}}
                     </p>
                     <p class="videoDescription">
-                        {{$video[$k]->description}}
+                        {{$video[$thirdItemInRow]->description}}
                     </p>
                 </a>
 
