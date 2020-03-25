@@ -35,7 +35,7 @@
         <span class="star">&nbsp;</span>
         <span class="star">&nbsp;</span>
       </div>
-      <button class="buttonFancy" onclick="performRating(event)" data-video-id="{{ $video->id }}">post rating</button>
+      <button class="buttonFancy" onclick="performRating(event)" data-video-id="{{ $video->id }}">Post rating</button>
       <span id="scoreMessage"></span>
     </div>
   </div>
