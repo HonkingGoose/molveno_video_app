@@ -26,8 +26,8 @@
         Keep making nested arrays until all items done.
         Display function to show arrays in grids of 3.
 
-        $arrayToDisplay = [];
-        $rowsToDisplay = 3;
+        $arrayFilledWithVideos = [];
+        $arrayNumberOfRowsToDisplay = 3;
 
         Foreach video found in the database, put it in the array.
         $arrayToDisplay = [[$item1, $item2, $item3], [$item4, $item5, $item6], [$item7, $item8, $item9]]
