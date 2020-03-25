@@ -17,7 +17,8 @@
     <table>
         {{-- We offset the first item in the grid because the search bar has tabindex 1. --}}
         {{-- TODO: rename variables to human readable variables.
-             TODO: decide if offset should be in its own variable for clarity.--}}
+             TODO: decide if offset should be in its own variable for clarity.
+             TODO: remove duplication in the display logic we're using basically the same code 3 time. --}}
         @for ($i = 2, $j = 3, $k = 4; $i < count($video); $i +=3, $j +=3, $k +=3) <tr class="videoCollection">
 
             @isset($video[$i])
