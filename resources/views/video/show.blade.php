@@ -53,7 +53,5 @@
   document.getElementById('watchButton').addEventListener("click", function(event) {
   startstop(event);
   });
-
-  //document.getElementById('score').selectedIndex = config.score - 1;
 </script>
 @endsection
