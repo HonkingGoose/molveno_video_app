@@ -19,7 +19,22 @@
         {{ $v->title }}<br><br>
         {{ $v->description }}<br><br>
     @endforeach
+    {{-- TODO: implement array builder
+        What should the logic be?
+        Found videos go into a array, with 2 dimensions, a horizontal and vertical dimension.
+        Add videos until the array has 3 items, then go to the next array.
+        Keep making nested arrays until all items done.
+        Display function to show arrays in grids of 3.
 
+        $arrayToDisplay = [];
+        $rowsToDisplay = 3;
+
+        Foreach video found in the database, put it in the array.
+        $arrayToDisplay = [[$item1, $item2, $item3], [$item4, $item5, $item6], [$item7, $item8, $item9]]
+        TODO: Discuss with trainer: maybe just use CSS grid/flexbox to display the found items, instead of hardcoding it in PHP?
+        TODO: Discuss with trainer: create a new function that handles the display of the items in a grid?
+
+        --}}
     <table>
         {{-- We offset the first item in the grid because the search bar has tabindex 1. --}}
         {{-- TODO: decide if offset should be in its own variable for clarity.
