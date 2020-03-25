@@ -125,7 +125,7 @@ class GuestController extends Controller
         try {
             $rating->save();
         } catch (\Exception $e) {
-            return response()->json(["error" => "Fout bij het opslaan van rating"]);
+            return response()->json(["error" => "Error when saving rating."]);
         }
 
         return response()->json(["succeed" => true]);
