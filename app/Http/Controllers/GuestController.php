@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Guest;
 use App\Video;
 use App\Rating;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Cookie;
@@ -96,8 +97,8 @@ class GuestController extends Controller
     /**
      * POST method to post rating
      *
-     * @param int $input
-     * return
+     * @param Request $request
+     * @return JsonResponse
      */
 
     public function postRating(Request $request)
