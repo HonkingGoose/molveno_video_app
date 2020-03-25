@@ -7,7 +7,7 @@
     <form class="col-8">
         @csrf
         <div class="form-group ">
-            <input class="form-control" placeholder="Search for your favorite movie" autofocus tabindex="1"
+            <input class="form-control" placeholder="Search for your favorite video" autofocus tabindex="1"
                 type="search" id="search" name="search" value="{{ $search }}">
         </div>
     </form>
@@ -15,6 +15,8 @@
 
 <div>
     <table>
+        {{-- We offset the first item in the grid because the search bar has tabindex 1. --}}
+        {{-- Maybe put the offset in a variable? --}}
         @for ($i = 2, $j = 3, $k = 4; $i < sizeOf($video); $i +=3, $j +=3, $k +=3) <tr class="videoCollection">
 
             @isset($video[$i])
