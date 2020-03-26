@@ -3,44 +3,31 @@
 @section('content')
 <h1 class="titlePage">Molveno Video App</h1>
 
+@if ($currentGuest)
+<p class="welcomeMessage">Goededag {{ $currentGuest->firstName }}</p>
+@endif
+
 <div class="d-flex justify-content-center">
-    <form class="col-8">
+    <form>
         @csrf
-        <div class="form-group ">
+        <div class="form-row">
             <input class="form-control" placeholder="Search for your favorite video" autofocus tabindex="1"
-                   type="search" id="search" name="search" value="{{ $search }}">
+                type="search" name="search" value="{{ $search }}">
+            <select class="form-control" name="category_id" tabindex="2">
+                <option value="">--- Select category ---</option>
+                @foreach ($categories as $category)
+                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                @endforeach
+            </select>
+            <button tabindex="3" class="btn btn-primary">Search</button>
         </div>
     </form>
-    {{--
-    TODO: Fill the dropdown button with the categories.
-    TODO: If no category selected, search all videos.
-    TODO: If category selected, only show videos which match both search term and category.
-    --}}
-    <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">
-            Select a category
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <?php
-            $categories = App\Video::all()->unique('category');
-            $categoriesSorted = $categories->sortBy('category');
-            ?>
-            @foreach($categoriesSorted as $category)
-                <a class="dropdown-item" href="#">"{{ $category->category }}"</a>
-            @endforeach
-        </div>
-    </div>
-
-{{--    Debug stuff below in the for each --}}
-    @foreach($categoriesSorted as $category)
-        "{{ $category->category }}"
-    @endforeach
 </div>
 
 <div class="videoGrid">
     @foreach ($videos as $video)
-    <a class="videoItem" data-sequence-number="{{ $loop->iteration }}" tabindex="{{ ++$loop->iteration }}" href="{{ route('watchVideo', ['video' => $video->id]) }}">
+    <a class="videoItem" data-sequence-number="{{ $loop->iteration }}" tabindex="{{ $loop->iteration+=3 }}"
+        href="{{ route('watchVideo', ['video' => $video->id]) }}">
         <img src="https://img.youtube.com/vi/{{ $video->youtube_uid }}/0.jpg" alt="Picture of video">
         <p class="videoTitle">{{ $video->title }}</p>
         <p class="videoDescription">{{ $video->description }}</p>

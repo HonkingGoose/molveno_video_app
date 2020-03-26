@@ -21,6 +21,12 @@ table {
   justify-content: center;
 }
 
+.welcomeMessage {
+  display: flex;
+  padding-top: 10px;
+  justify-content: center;
+}
+
 .videoGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

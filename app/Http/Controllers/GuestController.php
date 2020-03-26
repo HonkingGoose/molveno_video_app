@@ -35,6 +35,7 @@ class GuestController extends Controller
     public function indexVideo(Request $request)
     {
         $videos = [];
+        $currentGuest = $this->getCurrentGuest($request);
 
         $request->validate(
             [
@@ -43,7 +44,8 @@ class GuestController extends Controller
         );
 
         $search = $request->query('search');
-        $guest = $this->getCurrentGuest($request);
+        $categoryId = $request->query('category_id');
+
         $query = DB::table('videos');
 
         if ($search) {
@@ -51,9 +53,29 @@ class GuestController extends Controller
             $query->orWhere('description', 'like', '%' . $search . '%');
         }
 
+        if ($categoryId) {
+            // @TODO: fix me later
+            // $query->where('category.id', '%' . $categoryId . '%');
+        }
+
         $videos = $query->get();
 
-        return view('video.index', ['videos' => $videos, 'search' => $search]);
+        // @TODO: replace with real Category model
+        // $categories = \App\Category::all();
+        // optionally add sorting
+        $categories = [];
+        $category = new \StdClass();
+        $category->id = 1;
+        $category->name = "Test category";
+        $categories[] = $category;
+        $category->id = 2;
+        $category->name = "Test category 2";
+        $categories[] = $category;
+
+        return view(
+            'video.index',
+            ['videos' => $videos, 'search' => $search, 'categories' => $categories, 'currentGuest' => $currentGuest]
+        );
     }
 
     /**
