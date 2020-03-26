@@ -26,9 +26,11 @@ class GuestController extends Controller
     {
         $videos = [];
 
-        $request->validate([
-            'search' => 'alpha'
-        ]);
+        $request->validate(
+            [
+                'search' => 'alpha'
+            ]
+        );
 
         $search = $request->query('search');
         $guest = $this->getCurrentGuest($request);
