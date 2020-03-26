@@ -10,24 +10,25 @@
 
 <div class="container">
     <div class="row">
-        <div class="control-group" id="fields">
-            <label class="control-label" for="field1">List of Categories</label>
+        <div class="control-group">
             <div class="controls">
                 @foreach ($categories as $category)
                 <div class="input-group col-xs-3">
-                    <form action="/admin/category/<nummer>/update" role="form" autocomplete="off">
+                    <form method="POST" action="/admin/category/<nummer>/update">
+                        @csrf
                         <div class="input-group-btn">
                             <input class="form-control" name="name" type="text" value="{{$category->name}}">
-                            <button class="btn btn-primary btn-add" type="button">
+                            <button class="btn btn-primary btn-add">
                                 <span class="glyphicon glyphicon-edit"></span>
                             </button>
                         </div>
                     </form>
-                    <form action="/admin/category/delete">
+                    <form method="POST" action="/admin/category/delete">
+                        @csrf
                         <input type="hidden" name="category_id" value="{{ $category->id}}">
                         <div class="input-group-btn">
                             <input type="hidden" name="category_id" value="{{$category->id}}">
-                            <button class="btn btn-danger btn-remove" type="button" name="delete">
+                            <button class="btn btn-danger btn-remove">
                                 <span class="glyphicon glyphicon-remove"></span>
                             </button>
                         </div>
@@ -39,7 +40,7 @@
                         @csrf
                         <div class="input-group-btn">
                             <input class="form-control" name="name" type="text">
-                            <button class="btn btn-success btn-add" type="button">
+                            <button class="btn btn-success btn-add">
                                 <span class="glyphicon glyphicon-plus"></span>
                             </button>
                         </div>
