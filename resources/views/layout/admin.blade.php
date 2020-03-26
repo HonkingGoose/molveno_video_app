@@ -102,6 +102,7 @@
             <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
             @stack('scripts')
+            @stack('scriptsTwo')
 
             <script type="text/javascript">
               $(function(){
