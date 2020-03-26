@@ -37,9 +37,9 @@
                             <!-- Left Side Of Navbar -->
                             <ul class="nav" class="navbar-nav mr-auto">
 
-                                    {{-- <li class="active"><a href="/admin">Home</a></li> --}}
                                     <li><a href="{{ route('video.index') }}">Video index</a></li>
                                     <li><a href="{{ route('guest.index') }}">Guest index</a></li>
+                                    <li><a href="{{ route('category.index') }}">Category index</a></li>
                                     <li><a href="{{ route('guest.room.set') }}">Set roomnumber</a></li>
                                     <li><a href="{{ route('guest.checkout') }}">Guest checkout</a></li>
                                     <li><a href="/logout">Log out</a></li>
@@ -102,7 +102,7 @@
             <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
             @stack('scripts')
-            @stack('scriptsTwo')
+
 
             <script type="text/javascript">
               $(function(){

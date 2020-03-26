@@ -22,4 +22,23 @@ class CategoryController extends Controller
             var_dump("niet opgeslagen");
         }
     }
+
+    public function update(Request $request, Category $category) {
+        $category->name = $request->input('name');
+        if ($category->save()) {
+            return redirect()->route('category.index');
+        } else {
+            var_dump("niet opgeslagen");
+        }
+
+    }
+
+    public function delete(Category $category) {
+        if ($category->delete()) {
+            return redirect()->route('category.index');
+        } else {
+            echo "Error while deleting category";
+        }
+    }
+
 }

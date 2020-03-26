@@ -16,7 +16,9 @@ Route::middleware('auth')->group(function () {
     Route::prefix('admin')->group(function () {
         Route::resource('video', 'VideoController');
         Route::get('category', 'CategoryController@index')->name('category.index');
+        Route::post('/category/{category}/update', 'CategoryController@update');
         Route::post('category/store', 'CategoryController@store')->name('category.store');
+        Route::post('category/{category}/delete', 'CategoryController@delete');
         Route::get('guest/checkout', 'GuestController@showCheckout')->name('guest.checkout');
         Route::post('video/update', 'VideoController@update')->name('video.update');
         Route::post('guest/checkout', 'GuestController@tearDown');

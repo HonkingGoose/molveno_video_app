@@ -23,7 +23,7 @@
                             </button>
                         </div>
                     </form>
-                    <form method="POST" action="/admin/category/delete">
+                    <form method="POST" action="/admin/category/{{ $category->id }}/delete">
                         @csrf
                         <input type="hidden" name="category_id" value="{{ $category->id}}">
                         <div class="input-group-btn">
