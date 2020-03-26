@@ -1,3 +1,5 @@
+"use strict"
+
 $(document).ready(function () {
     const NUMBER_OF_COLUMNS = 3;
 
