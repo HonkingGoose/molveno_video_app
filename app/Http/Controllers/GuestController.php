@@ -24,8 +24,26 @@ class GuestController extends Controller
 
     public function indexVideo(Request $request)
     {
+        $videos = [];
+
+        $request->validate(
+            [
+                'search' => 'alpha'
+            ]
+        );
+
+        $search = $request->query('search');
         $guest = $this->getCurrentGuest($request);
-        return view('video.index', ['video' => Video::all()]);
+        $query = DB::table('videos');
+
+        if ($search) {
+            $query->where('title', 'like', '%' . $search . '%');
+            $query->orWhere('description', 'like', '%' . $search . '%');
+        }
+
+        $videos = $query->get();
+
+        return view('video.index', ['videos' => $videos, 'search' => $search]);
     }
 
     /**
