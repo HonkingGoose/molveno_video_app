@@ -33,6 +33,9 @@ Route::prefix('guest')->group(function () {
     Route::get('watch_video', 'GuestController@indexVideo');
     Route::get('watch_video/{video}', 'VideoController@show')->name('watchVideo');
     Route::post('watch_video/{video}', 'GuestController@postRating');
+    Route::get('contact','ContactFormController@index');
+    Route::post('contact','ContactFormController@send');
+    Route::get('contact/sent','ContactFormController@sentSuccessfully');
 });
 Auth::routes();
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
