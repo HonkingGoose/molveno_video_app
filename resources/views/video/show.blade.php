@@ -17,46 +17,26 @@
     <div id="player"></div>
     <script>
       var config = {
-        youtubeId: '{{ $video->youtube_uid }}'
-      }
-
-      function performRating(event) {
-          console.log(event);
-          // event.target --> <select> html node
-          let videoId = event.target.dataset.videoId;
-          let score = event.target.options[event.target.selectedIndex].value;
-
-          // AJAX request
-          let url =  `/guest/watch_video/${videoId}`;
-          fetch(
-            url,
-            {
-                'method': "POST",
-                'headers': {
-                    'X-CSRF-TOKEN': globalCsrfToken
-                }
-            }
-          ).then(function(result) {
-                console.log(result);
-          }).catch(function (err) {
-              console.log(err);
-          });
+        youtubeId: '{{ $video->youtube_uid }}',
+        score: '{{ $score }}'
       }
     </script>
     <script src="{{ asset('js/watch_video_js.js') }}"></script>
     <div id="controls">
       <button id="watchButton" class="buttonFancy">Watch</button>
       <a id="doNotHover" href="/guest/watch_video"><button class="buttonFancy">Back to index</button></a>
-      <button class="buttonFancy">Rate</button>
+      <button onclick="showRatingsDiv()" class="buttonFancy">Rate</button>
     </div>
-    <div>
-          <select name="score" id="score" data-video-id="{{ $video->id }}" onchange="performRating(event)">
-               <option value="1">1 star</option>
-               <option value="2">2 stars</option>
-               <option value="3">3 stars</option>
-               <option value="4">4 stars</option>
-               <option value="5">5 stars</option>
-           </select>
+    <div id="ratingsDiv">
+      <div class="stars" id="stars" data-rating="3" data-video-id="{{ $video->id }}">
+        <span class="star">&nbsp;</span>
+        <span class="star">&nbsp;</span>
+        <span class="star">&nbsp;</span>
+        <span class="star">&nbsp;</span>
+        <span class="star">&nbsp;</span>
+      </div>
+      <button class="buttonFancy" onclick="performRating(event)" data-video-id="{{ $video->id }}">Post rating</button>
+      <span id="scoreMessage"></span>
     </div>
   </div>
   <div id="side">

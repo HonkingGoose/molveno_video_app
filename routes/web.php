@@ -32,7 +32,7 @@ Route::middleware('auth')->group(function () {
 Route::prefix('guest')->group(function () {
     Route::get('watch_video', 'GuestController@indexVideo');
     Route::get('watch_video/{video}', 'VideoController@show')->name('watchVideo');
-    Route::post('watch_video/{video}', 'GuestController@postRating');
+    Route::post('watch_video/{video}/rate', 'GuestController@postRating');
 });
 Auth::routes();
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');

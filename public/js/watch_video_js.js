@@ -35,31 +35,6 @@ function onPlayerStateChange(event) {
   }
 }
 
-// document.addEventListener('keyup', (event) => {
-//     // keycode 13 = enter
-//     if(event.keyCode === 13 && document.getElementById('watchButton').classList.contains('focused')){
-//         startstop(event);
-//         console.log('gevonden!');
-//     }
-//     // keycode 39 = pijltje naar rechts
-//     if(event.keyCode === 39){
-//       let controlsDiv = document.getElementById('controls');
-//       let index = -1;
-//       for(let i = 1; i < controlsDiv.childNodes.length; i += 2){
-//         if(controlsDiv.childNodes[i].classList.contains('focused')){
-//           index = i;
-//           controlsDiv.childNodes[i].classList.remove('focused');
-//         }
-//       }
-//       if((controlsDiv.childNodes.length - (index +2)) < 2){
-//         index = -1;
-//       }
-//       controlsDiv.childNodes[index+2].classList.add('focused');
-
-//       //console.log(document.getElementById('controls').childNodes);
-//     }
-// });
-
 document.addEventListener('keyup', (event) => {
     // keycode 13 = enter
     if(event.keyCode === 13 && player.getPlayerState() === 1){
@@ -79,3 +54,64 @@ function startstop(event){
     }
 
 }
+
+function performRating(event) {
+    let videoId = document.getElementById('stars').dataset.videoId;
+    let score = document.getElementById('stars').dataset.rating;
+    // AJAX request
+    let url = `/guest/watch_video/${videoId}/rate`;
+    let cookie = document.cookie;
+    let formData = {score: score, video_id: videoId}
+    fetch(
+        url,
+        {
+            'method': "POST",
+            'headers': {
+                'X-CSRF-TOKEN': globalCsrfToken,
+                'Content-Type': 'application/json'
+            },
+            'body': JSON.stringify(formData)
+        }
+    ).then(function (result) {
+        document.getElementById('scoreMessage').innerHTML = 'Your rating has been posted!';
+    }).catch(function (err) {
+        document.getElementById('scoreMessage').innerHTML = 'Something went wrong with posting your rating.';
+    });
+}
+
+function showRatingsDiv() {
+    document.getElementById('ratingsDiv').style.display = "initial";
+}
+
+function setRating(ev) {
+    let span = ev.currentTarget;
+    let stars = document.querySelectorAll('.star');
+    let match = false;
+    let num = 0;
+    stars.forEach(function (star, index) {
+        if (match) {
+            star.classList.remove('rated');
+        } else {
+            star.classList.add('rated');
+        }
+        //are we currently looking at the span that was clicked
+        if (star === span) {
+            match = true;
+            num = index + 1;
+        }
+    });
+    document.querySelector('.stars').setAttribute('data-rating', num);
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('stars').setAttribute('data-rating', config.score)
+
+    let stars = document.querySelectorAll('.star');
+    stars.forEach(function (star) {
+        star.addEventListener('click', setRating);
+    });
+
+    let rating = parseInt(document.querySelector('.stars').getAttribute('data-rating'));
+    let target = stars[rating - 1];
+    target.dispatchEvent(new MouseEvent('click'));
+});

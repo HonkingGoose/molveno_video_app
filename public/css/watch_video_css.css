@@ -49,3 +49,29 @@ body {
 #doNotHover {
     color: white;
 }
+
+#ratingsDiv {
+    display:none;
+}
+
+.show {
+    display: initial;
+}
+
+#scoreMessage {
+    color: green;
+}
+
+.star{
+    color: goldenrod;
+    font-size: 2.0rem;
+    padding: 0 1rem; /* space out the stars */
+  }
+  .star::before{
+    content: '\2606';    /* star outline */
+    cursor: pointer;
+  }
+  .star.rated::before{
+    /* the style for a selected star */
+    content: '\2605';  /* filled star */
+  }
