@@ -36,6 +36,7 @@ Route::prefix('guest')->group(function () {
     Route::get('contact','ContactFormController@index');
     Route::post('contact','ContactFormController@send');
     Route::get('contact/sent','ContactFormController@sentSuccessfully');
+    Route::post('watch_video/{video}/rate', 'GuestController@postRating');
 });
 Auth::routes();
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
