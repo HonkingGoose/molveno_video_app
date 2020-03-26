@@ -5,10 +5,13 @@ namespace App\Http\Controllers;
 use App\Guest;
 use App\Video;
 use App\Rating;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\View\View;
 
 class GuestController extends Controller
 {
@@ -22,6 +25,13 @@ class GuestController extends Controller
         return view('guest.index', ['guest' => Guest::all()]);
     }
 
+    /**
+     * @param Request $request
+     * @return Application|Factory|View
+     */
+    // TODO: Use the category supplied from the view to filter the results of the search.
+    // TODO: Add DB seed with category: "All"
+    // TODO: If/else statement on category: IF category === "All" OR no category THEN search normally, ELSE filter by category chosen.
     public function indexVideo(Request $request)
     {
         $videos = [];
