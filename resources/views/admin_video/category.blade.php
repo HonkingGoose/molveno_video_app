@@ -14,29 +14,35 @@
             <label class="control-label" for="field1">List of Categories</label>
             <div class="controls">
                 @foreach ($categories as $category)
-                <div class="entry input-group col-xs-3">
+                <div class="input-group col-xs-3">
                     <form action="/admin/category/<nummer>/update" role="form" autocomplete="off">
-                        <input onblur="this.form.submit();" class="form-control" name="name" type="text" value="{{$category->name}}">
-                    </form>
-                    <form action="/admin/category/delete" role="form" autocomplete="off">
-                        <span class="input-group-btn">
-                        <input type="hidden" name="category_id" value="{{$category->id}}">
-                            <button class="btn btn-danger btn-remove" type="button">
-                                <span class="glyphicon glyphicon-minus"></span>
+                        <div class="input-group-btn">
+                            <input class="form-control" name="name" type="text" value="{{$category->name}}">
+                            <button class="btn btn-primary btn-add" type="button">
+                                <span class="glyphicon glyphicon-edit"></span>
                             </button>
-                        </span>
+                        </div>
+                    </form>
+                    <form action="/admin/category/delete">
+                        <input type="hidden" name="category_id" value="{{ $category->id}}">
+                        <div class="input-group-btn">
+                            <input type="hidden" name="category_id" value="{{$category->id}}">
+                            <button class="btn btn-danger btn-remove" type="button" name="delete">
+                                <span class="glyphicon glyphicon-remove"></span>
+                            </button>
+                        </div>
                     </form>
                 </div>
                 @endforeach
-                <div class="entryTwo input-group col-xs-3">
-                    <form method="POST" id="myForm" action="{{ route('category.store') }}" role="form" autocomplete="off">
+                <div class="input-group col-xs-3">
+                    <form method="POST" action="{{ route('category.store') }}">
                         @csrf
-                        <input class="form-control" name="name" type="text">
-                            <span class="input-group-btn">
-                                <button class="btn btn-success btn-add" type="button">
-                                    <span class="glyphicon glyphicon-plus"></span>
-                                </button>
-                            </span>
+                        <div class="input-group-btn">
+                            <input class="form-control" name="name" type="text">
+                            <button class="btn btn-success btn-add" type="button">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -45,7 +51,3 @@
 </div>
 
 @endsection
-
-@push('scriptsTwo')
-<script src="{{asset('js/categoryindex.js')}}"></script>
-@endpush
