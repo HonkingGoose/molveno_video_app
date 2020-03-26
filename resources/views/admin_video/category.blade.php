@@ -14,7 +14,7 @@
             <div class="controls">
                 @foreach ($categories as $category)
                 <div class="input-group col-xs-3">
-                    <form method="POST" action="/admin/category/<nummer>/update">
+                    <form method="POST" action="/admin/category/{{ $category->id }}/update">
                         @csrf
                         <div class="input-group-btn">
                             <input class="form-control" name="name" type="text" value="{{$category->name}}">
