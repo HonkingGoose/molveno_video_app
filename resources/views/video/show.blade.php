@@ -44,7 +44,7 @@
         <h1 id="sideTitle">{{ $video->title }}</h1>
         <h4 class="sideSubTitle">description</h4>
         <p>{{ $video->description }}</p>
-        <p>category: {{ $video->category }}</p>
+        <p>category: {{ $video->category->name }}</p>
         <p>average rating: {{ $video->getAverageRating() }}</p>
     </div>
   </div>
