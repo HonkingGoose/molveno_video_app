@@ -45,6 +45,7 @@ class ContactFormController extends Controller
 
     /**
      * If the contact form is successfully sent, return a 'success' view.
+     *
      * @return Application|Factory|View
      */
     public function sentSuccessfully()
