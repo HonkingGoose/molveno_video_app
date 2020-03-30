@@ -21,6 +21,8 @@ class ContactFormController extends Controller
     }
 
     /**
+     * Generate a new contact form.
+     *
      * @param Request $request
      * @return Application|Factory|View
      */
