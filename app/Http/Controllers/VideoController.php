@@ -161,9 +161,6 @@ class VideoController extends Controller
             return response()->json(['errors' => $error->errors()->all()]);
         }
 
-
-
-
         $video = Video::find($request->input('id'));
         $video->title = $request->input('title');
         $video->description = $request->input('description');
