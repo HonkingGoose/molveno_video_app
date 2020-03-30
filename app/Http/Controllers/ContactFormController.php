@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
 use App\ContactForm;
+use Illuminate\View\View;
 
 class ContactFormController extends Controller
 {
@@ -17,6 +20,10 @@ class ContactFormController extends Controller
         return view('contact.form');
     }
 
+    /**
+     * @param Request $request
+     * @return Application|Factory|View
+     */
     public function send(Request $request)
     {
 
@@ -31,7 +38,7 @@ class ContactFormController extends Controller
             return view('contact.sentSuccessfully');
         } else {
             return view('contact.form');
-        }      
+        }
     }
 
     public function sentSuccessfully()
