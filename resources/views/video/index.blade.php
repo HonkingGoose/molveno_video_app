@@ -4,7 +4,7 @@
 <h1 class="titlePage">Molveno Video App</h1>
 
 @if ($currentGuest)
-<p class="welcomeMessage">Goededag {{ $currentGuest->firstName }}</p>
+<p class="welcomeMessage">Hello {{ $currentGuest->firstName }}</p>
 @endif
 
 <div class="d-flex justify-content-center">
