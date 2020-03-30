@@ -6,6 +6,7 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
 use App\ContactForm;
+use Illuminate\Http\Response;
 use Illuminate\View\View;
 
 class ContactFormController extends Controller
@@ -13,7 +14,7 @@ class ContactFormController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
