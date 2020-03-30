@@ -13,16 +13,8 @@ class VideosTableSeeder extends Seeder
      */
     public function run()
     {
-
        //Thumbnail watch_video factory
-
         (new Faker\Generator)->seed(123);
-
         factory(App\Video::class, 19)->create();
-
-
-       
     }
-
-
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use Exception;
 
 use Illuminate\Http\Request;
 
@@ -34,11 +35,14 @@ class CategoryController extends Controller
     }
 
     public function delete(Category $category) {
-        if ($category->delete()) {
-            return redirect()->route('category.index');
-        } else {
-            echo "Error while deleting category";
+        try {
+            if ($category->delete()) {
+                return redirect()->route('category.index');
+            }
         }
+        catch (\Exception $e) {
+           echo "Error: You're trying to delete a category that still has videos attached.";
+       }
     }
 
 }

@@ -25,9 +25,6 @@ class CreateVideosTable extends Migration
             $table->boolean('suitable_for_kids');
             $table->string('created_by');
         });
-
-
-       
     }
 
     /**
