@@ -12,11 +12,11 @@
         @csrf
         <div class="form-row">
             <input class="form-control" placeholder="Search for your favorite video" autofocus tabindex="1"
-                type="search" name="search" value="{{ $search }}">
+                   type="search" name="search" value="{{ $search }}">
             <select class="form-control" name="category_id" tabindex="2">
                 <option value="">--- Select category ---</option>
                 @foreach ($categories as $category)
-                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    <option value="{{ $category->id }}">{{ $category->name }}</option>
                 @endforeach
             </select>
             <button tabindex="3" class="btn btn-primary">Search</button>
