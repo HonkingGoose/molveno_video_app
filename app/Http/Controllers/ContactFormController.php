@@ -19,11 +19,6 @@ class ContactFormController extends Controller
 
     public function send(Request $request)
     {
-    //    var_dump( $request->input('firstName'));
-    //    var_dump( $request->input('lastName'));
-    //    var_dump( $request->input('roomNumber'));
-    //    var_dump( $request->input('category'));
-    //    var_dump( $request->input('message'));
 
         $contact_form = new ContactForm();
         $contact_form->firstName = $request->input('firstName');

@@ -5,7 +5,6 @@
 
 @section('content')
     <form method="post" id="contact_form" class="form-horizontal">
-        <!-- weet niet wat @csrf betekent -->
         @csrf
         <div class="form-group">
             <label class="control-label col-md-4" for="firstName">First name:</label>
