@@ -28,7 +28,6 @@ class ContactFormController extends Controller
      */
     public function send(Request $request)
     {
-
         $contact_form = new ContactForm();
         $contact_form->firstName = $request->input('firstName');
         $contact_form->lastName = $request->input('lastName');
