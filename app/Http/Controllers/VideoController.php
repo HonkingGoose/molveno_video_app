@@ -7,6 +7,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Video;
+use App\Category;
 use App\Guest;
 use App\Rating;
 use Datatables;
@@ -26,6 +27,7 @@ class VideoController extends Controller
     {
         if ($request->ajax()) {
             $data = Video::latest()->get();
+            $data->loadMissing('category');
             return DataTables::of($data)
                 ->addColumn('action', function ($data) {
                     $button = '<button type="button" name="edit" id="' . $data->id . '" class="edit btn btn-primary btn-sm">Edit</button>';
@@ -35,7 +37,8 @@ class VideoController extends Controller
                 ->rawColumns(['action'])
                 ->make(true);
         }
-        return view('admin_video.index');
+        $categories = Category::all();
+        return view('admin_video.index', ['categories' => $categories]);
     }
 
     /**
@@ -45,9 +48,7 @@ class VideoController extends Controller
      */
     public function create()
     {
-        $categories = ['cat1', 'cat2', 'cat3'];
-
-        return view('admin_video.create', ['video' => Video::all(), 'categories' => $categories]);
+        return view('admin_video.create', ['categories' => Category::all()]);
     }
 
     /**
@@ -72,11 +73,18 @@ class VideoController extends Controller
             return response()->json(['errors' => $error->errors()->all()]);
         }
 
+        $category = Category::find($request->input('category'));
+
+        if (!$category) {
+            echo 'Category not valid!';
+            exit;
+        }
 
         $video = new Video();
         $video->title = $request->input('title');
         $video->description = $request->input('description');
-        $video->category = $request->input('category');
+        // $video->category = $request->input('category');
+        $video->category()->associate($category);
         $video->youtube_uid = $request->input('youtube_uid');
         $video->suitable_for_kids = (bool)$request->input('suitable_for_kids', 0);
         $video->available_to_watch = (bool)$request->input('available_to_watch', 0);
@@ -91,7 +99,7 @@ class VideoController extends Controller
 
     /**
      * Display the specified resource.
-     * 
+     *
      * @param Request $request
      * @param Video $video
      * @return Application|Factory|View
@@ -99,7 +107,7 @@ class VideoController extends Controller
     public function show(Request $request, Video $video)
     {
         $roomNumber = $request->cookie('ROOM_NUMBER');
-        if(!$roomNumber){
+        if (!$roomNumber) {
             return view('guest.room.set');
         }
         $guest = Guest::where('roomNumber', $roomNumber)->first();
@@ -107,12 +115,12 @@ class VideoController extends Controller
             $video->id,
             $guest->generateUserHash()
         );
-        if($rating){
+        if ($rating) {
             $score = $rating->score;
         } else {
             $score = 3;
         }
-        
+
         return view('video.show', ['video' => $video, 'score' => $score]);
     }
 
@@ -125,8 +133,9 @@ class VideoController extends Controller
     public function edit($id)
     {
         if (request()->ajax()) {
+            $categories = Category::all();
             $data = Video::findOrFail($id);
-            return response()->json(['result' => $data]);
+            return response()->json(['result' => $data, 'categories' => $categories]);
         }
     }
 
@@ -155,7 +164,8 @@ class VideoController extends Controller
         $video = Video::find($request->input('id'));
         $video->title = $request->input('title');
         $video->description = $request->input('description');
-        $video->category = $request->input('category');
+        // $video->category = $request->input('category');
+        $video->category()->associate(Category::find($request->input('category')));
         $video->youtube_uid = $request->input('youtube_uid');
         $video->suitable_for_kids = (bool)$request->input('suitable_for_kids', 0);
         $video->available_to_watch = (bool)$request->input('available_to_watch', 0);

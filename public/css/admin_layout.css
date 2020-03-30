@@ -15,6 +15,10 @@ body {
     color: black;
 }
 
+.whiteTextColor{
+    color: white;
+}
+
 .form-group.row {
     color: white;
 }
