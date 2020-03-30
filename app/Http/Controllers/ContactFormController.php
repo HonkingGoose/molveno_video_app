@@ -35,7 +35,7 @@ class ContactFormController extends Controller
         if ($contact_form->save()) {
             return view('contact.sentSuccessfully');
         } else {
-            var_dump("niet opgeslagen");
+            return view('contact.form');
         }      
     }
 
