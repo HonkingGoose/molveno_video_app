@@ -17,29 +17,23 @@ body {
     background-size: cover;
     display:flex;
     flex-direction: column;
-    /* justify-content: center; */
     align-items: center;
     padding: 0 20px;
     text-align: center;
-
 }
 
 #showcase .ml3{
-
     margin-top:80px;
     line-height: 1.2;
     font-weight: 900;
-    font-size: 3.5em;
+    font-size: 4em;
 }
-
-
 
 #showcase p{
     font-size: 25px;
-
 }
 
-#showcase .button, #contactForm .button{
+#showcase .button, #contactForm .buttonTwo{
     font-size: 18px;
     text-decoration: none;
     color: white;
@@ -50,8 +44,14 @@ body {
     font-weight: bold;
 }
 
-#showcase .button:hover, #contactForm .button:hover{
-    background: black;
+
+#showcase .button:hover{
+    background-color: black;
+    color:white;
+}
+
+div#contactForm .buttonTwo:hover{
+    background-color:black;
     color:white;
 }
 
@@ -64,11 +64,9 @@ body {
     justify-content: center;
 }
 
-
 div#contactForm{
     height: 20vh;
-    background-color: rgb(134, 131, 131);
-    opacity: 0.6;
+    background-color: rgb(134, 131, 131, 0.7);
 }
 
 div#contactForm p{
