@@ -24,11 +24,15 @@ body {
 
 }
 
-#showcase h1{
-    font-size: 50px;
+#showcase .ml3{
+
     margin-top:80px;
     line-height: 1.2;
+    font-weight: 900;
+    font-size: 3.5em;
 }
+
+
 
 #showcase p{
     font-size: 25px;

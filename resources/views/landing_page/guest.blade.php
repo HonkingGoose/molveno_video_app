@@ -9,7 +9,7 @@
 </head>
 <body>
     <div id="showcase">
-        <h1>Welcome to Molveno Video App</h1>
+        <h1 class="ml3">Welcome to Molveno Video App</h1>
         <p>
             Dear guest, clicking the button will give you an overview of videos hotel molveno has to offer.
         </p>
@@ -20,4 +20,7 @@
         <a href="/guest/contact" class="button">Contact form</a>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+    <script src="{{asset('js/movingletters.js')}}"></script>
 </body>
+</html>
