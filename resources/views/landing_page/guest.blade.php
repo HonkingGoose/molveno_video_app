@@ -5,19 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="{{ asset('css/landing_pagelayout.css') }}" rel="stylesheet">
-    <title>Welcome to Molveno Video</title>
+    <title>Welcome to the Molveno Lake Resort</title>
 </head>
 <body>
     <div id="showcase">
-        <h1>Welcome to Molveno Video App</h1>
-        <p>
-            Dear guest, clicking the button will give you an overview of videos hotel molveno has to offer.
-        </p>
-        <a href="/guest/watch_video" class="button">Watch video</a>
+        <h1>Welcome to the Molveno Lake Resort</h1>
+        <a href="/guest/watch_video" class="button">Watch videos</a>
     </div>
     <div id="contactForm">
-        <p>Questions and/or remarks about our hotel services?</p>
-        <a href="/guest/contact" class="button">Contact form</a>
+        <p>For questions or remarks about our service:</p>
+        <a href="/guest/contact" class="button">Contact us</a>
     </div>
-
 </body>
