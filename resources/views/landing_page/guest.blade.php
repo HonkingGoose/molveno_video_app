@@ -17,7 +17,7 @@
     </div>
     <div id="contactForm">
         <p>Questions and/or remarks about our hotel services?</p>
-        <a href="#" class="button">Contact form</a>
+        <a href="/guest/contact" class="button">Contact form</a>
     </div>
 
 </body>
