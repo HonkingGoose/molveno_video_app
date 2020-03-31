@@ -16,8 +16,5 @@
         <p>For questions or remarks about our service:</p>
         <a href="/guest/contact" class="buttonTwo">Contact us</a>
     </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
-    <script src="{{asset('js/movingletters.js')}}"></script>
 </body>
 </html>
