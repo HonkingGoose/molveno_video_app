@@ -27,10 +27,12 @@ class GuestController extends Controller
     }
 
     /**
+     * Display a listing of videos.
+     * This list can be filtered by category.
+     *
      * @param Request $request
      * @return Application|Factory|View
      */
-   
     public function indexVideo(Request $request)
     {
         $videos = [];
