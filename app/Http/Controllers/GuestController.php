@@ -54,23 +54,14 @@ class GuestController extends Controller
         }
 
         if ($categoryId) {
-            // @TODO: fix me later
-            // $query->where('category.id', '%' . $categoryId . '%');
+
+            $query->where('id', '%' . $categoryId . '%');
         }
 
         $videos = $query->get();
 
-        // @TODO: replace with real Category model
-        // $categories = \App\Category::all();
-        // optionally add sorting
-        $categories = [];
-        $category = new \StdClass();
-        $category->id = 1;
-        $category->name = "Test category";
-        $categories[] = $category;
-        $category->id = 2;
-        $category->name = "Test category 2";
-        $categories[] = $category;
+        $categories = \App\Category::all();
+        // TODO: optionally add sorting
 
         return view(
             'video.index',
