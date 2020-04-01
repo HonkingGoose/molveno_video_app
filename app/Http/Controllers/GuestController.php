@@ -48,13 +48,10 @@ class GuestController extends Controller
 
         $query = DB::table('videos');
 
-        if ($search) {
+        if ($search && is_null($categoryId)) {
             $query->where('title', 'like', '%' . $search . '%');
             $query->orWhere('description', 'like', '%' . $search . '%');
-        }
-
-        if ($categoryId) {
-
+        } else ($categoryId) {
             $query->where('id', '%' . $categoryId . '%');
         }
 
