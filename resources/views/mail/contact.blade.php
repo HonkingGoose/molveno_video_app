@@ -1,6 +1,6 @@
-<h1>{{ $contactForm->firstName }} {{ $contactForm->lastName }} has said the following:</h1>
+<h2>{{ $contactForm->firstName }} {{ $contactForm->lastName }} has said the following:</h2>
 
-<p>from roomnumber: {{ $contactForm->roomNumber }}</p>
+<p>From room number: {{ $contactForm->roomNumber }}</p>
 
 <p>category: {{ $contactForm->category }}</p>
 <p>created at: {{ $contactForm->created_at }}</p>
