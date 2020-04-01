@@ -4,5 +4,5 @@
 
 <p>category: {{ $contactForm->category }}</p>
 <p>created at: {{ $contactForm->created_at }}</p>
-<h2>message</h2>
+<h3>message</h3>
 <p>{{ $contactForm->message }}</p>
