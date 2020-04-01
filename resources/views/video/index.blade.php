@@ -10,7 +10,7 @@
 <div class="d-flex justify-content-center">
     <form>
         @csrf
-        <div class="form-row">
+        <div id="searchBox" class="form-row">
             <input class="form-control" placeholder="Search for your favorite video" autofocus tabindex="1"
                    type="search" name="search" value="{{ $search }}">
             <select class="form-control" name="category_id" tabindex="2">

@@ -81,3 +81,7 @@ a {
   text-align: center;
   font-size: 15px;
 }
+
+#searchBox {
+    margin-bottom: 1.5rem;
+}
