@@ -4,6 +4,16 @@
 @section('title', 'contact form')
 
 @section('content')
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+
     <form method="post" id="contact_form" class="form-horizontal">
         @csrf
         <div class="form-group">
@@ -37,7 +47,7 @@
                         <option value="others">others</option>
                     </select>
                 </div>
-        </div>        
+        </div>
 
         <div class="form-group">
             <label class="control-label col-md-4" for="message">Message:</label>
@@ -45,12 +55,11 @@
                     <input class="form-control" id="Message_id" type="text" name="message" class="form-control @error('message') is-invalid @enderror" value="{{ old('message') }}" required autocomplete="message" autofocus>
                 </div>
         </div>
-  
+
         <br />
         <div class="form-group" align="center">
-            <!-- <input type="hidden" name="action" id="action" value="Add" />
-            <input type="hidden" name="id" id="hidden_id" /> -->
-            <input type="submit" name="action_button" id="action_button" class="btn btn-warning" value="Add" />
-        </div>  
+            <a class="btn btn-success btn-md" href="/">Back to home</a>
+            <input type="submit" name="action_button" id="action_button" class="btn btn-warning" value="Send form" />
+        </div>
     </form>
 @endsection
