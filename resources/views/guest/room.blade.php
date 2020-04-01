@@ -36,11 +36,11 @@
 <form method="POST">
     @csrf
     <div class="form-group">
-        <label for="roomNumber">Room number:</label>
-        <input class="form-control" id="roomNumber" type="number" name="roomNumber">
+        <label class="whiteTextColor" for="roomNumber">Room number:</label>
+        <input class="col-sm" class="form-control" id="roomNumber" type="number" name="roomNumber">
     </div>
     <div class="form-group">
-        <button class="button primary">Set room number</button>
+        <button class="btn btn-success btn-sm">Set room number</button>
     </div>
 </form>
 @endsection

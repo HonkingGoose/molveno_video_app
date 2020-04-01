@@ -1,7 +1,7 @@
 <?php
 
 namespace App;
-
+use App\Category;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
@@ -15,6 +15,11 @@ class Video extends Model
     public function ratings()
     {
         return $this->hasMany('App\Rating');
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(\App\Category::class);
     }
 
     /**
