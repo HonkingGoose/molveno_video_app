@@ -30,9 +30,7 @@ class GuestController extends Controller
      * @param Request $request
      * @return Application|Factory|View
      */
-    // TODO: If/else statement on category: IF no category THEN search normally, ELSE filter videos by chosen category.
-    // TODO: Update PHPDoc before making a pull-request.
-    // TODO: Check remaining TODO's, and remove before pull-request.
+   
     public function indexVideo(Request $request)
     {
         $videos = [];
@@ -45,26 +43,28 @@ class GuestController extends Controller
         );
 
         $search = $request->query('search');
-        $categoryId = $request->query('category_id');
+        $categoryId = (int)$request->query('category_id');
 
         $queryVideo = DB::table('videos');
-        $queryCategory = DB::table('categories');
 
         if ($search) {
-            $queryVideo->where('title', 'like', '%' . $search . '%');
-            $queryVideo->orWhere('description', 'like', '%' . $search . '%');
-        } else ($categoryId) {
-            $queryCategory->where('id', '%' . $categoryId . '%');
+            $queryVideo->where(function ($query) use ($search) {
+                $query->where('title', 'like', '%' . $search . '%');
+                $query->orWhere('description', 'like', '%' . $search . '%');
+            });
+        }
+
+        if ($categoryId) {
+            $queryVideo->where('category_id', $categoryId);
         }
 
         $videos = $queryVideo->get();
 
         $categories = Category::all();
-        // TODO: optionally add sorting
 
         return view(
             'video.index',
-            ['videos' => $videos, 'search' => $search, 'categories' => $categories, 'currentGuest' => $currentGuest]
+            ['videos' => $videos, 'search' => $search, 'categoryId' => $categoryId, 'categories' => $categories, 'currentGuest' => $currentGuest]
         );
     }
 

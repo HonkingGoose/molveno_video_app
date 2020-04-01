@@ -16,10 +16,11 @@
             <select class="form-control" name="category_id" tabindex="2">
                 <option value="">--- Select category ---</option>
                 @foreach ($categories as $category)
-                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    <option @if ($categoryId === $category->id)selected @endif value="{{ $category->id }}">{{ $category->name }}</option>
                 @endforeach
             </select>
             <button tabindex="3" class="btn btn-primary">Search</button>
+            <a class="btn btn-secondary" href="{{ route('guest.videoIndex') }}">Reset</a>
         </div>
     </form>
 </div>
