@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Guest;
 use App\Video;
 use App\Rating;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\View\View;
 
 class GuestController extends Controller
 {
@@ -22,9 +26,17 @@ class GuestController extends Controller
         return view('guest.index', ['guest' => Guest::all()]);
     }
 
+    /**
+     * Display a listing of videos.
+     * This list can be filtered by category.
+     *
+     * @param Request $request
+     * @return Application|Factory|View
+     */
     public function indexVideo(Request $request)
     {
         $videos = [];
+        $currentGuest = $this->getCurrentGuest($request);
 
         $request->validate(
             [
@@ -33,17 +45,29 @@ class GuestController extends Controller
         );
 
         $search = $request->query('search');
-        $guest = $this->getCurrentGuest($request);
-        $query = DB::table('videos');
+        $categoryId = (int)$request->query('category_id');
+
+        $queryVideo = DB::table('videos');
 
         if ($search) {
-            $query->where('title', 'like', '%' . $search . '%');
-            $query->orWhere('description', 'like', '%' . $search . '%');
+            $queryVideo->where(function ($query) use ($search) {
+                $query->where('title', 'like', '%' . $search . '%');
+                $query->orWhere('description', 'like', '%' . $search . '%');
+            });
         }
 
-        $videos = $query->get();
+        if ($categoryId) {
+            $queryVideo->where('category_id', $categoryId);
+        }
 
-        return view('video.index', ['videos' => $videos, 'search' => $search]);
+        $videos = $queryVideo->get();
+
+        $categories = Category::all();
+
+        return view(
+            'video.index',
+            ['videos' => $videos, 'search' => $search, 'categoryId' => $categoryId, 'categories' => $categories, 'currentGuest' => $currentGuest]
+        );
     }
 
     /**
