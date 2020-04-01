@@ -29,6 +29,12 @@ class ContactFormController extends Controller
      */
     public function send(Request $request)
     {
+        $request->validate([
+            'firstName' => 'required|alpha',
+            'lastName' => 'required|alpha',
+            'roomNumber'=> 'required|integer'
+        ]);
+
         $contact_form = new ContactForm();
         $contact_form->firstName = $request->input('firstName');
         $contact_form->lastName = $request->input('lastName');
