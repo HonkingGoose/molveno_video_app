@@ -58,7 +58,7 @@
 
         <br />
         <div class="form-group" align="center">
-            <a class="btn btn-success btn-md" href="/guest">Back to home</a>
+            <a class="btn btn-success btn-md" href="/">Back to home</a>
             <input type="submit" name="action_button" id="action_button" class="btn btn-warning" value="Send form" />
         </div>
     </form>

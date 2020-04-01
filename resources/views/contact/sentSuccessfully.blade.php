@@ -5,5 +5,5 @@
 @section('content')
 <h2>Your contact form has been received.<h2>
 
-    <a class="btn btn-success btn-lg" href="/guest">Back to home</a>
+    <a class="btn btn-success btn-lg" href="/">Back to home</a>
 @endsection
