@@ -1,4 +1,4 @@
-*{
+* {
     margin: 0;
     padding: 0;
 }
@@ -11,29 +11,29 @@ body {
     line-height: 1.6;
 }
 
-#showcase{
+#showcase {
     background-image: url("../images/molveno_lake.jpg");
     height: 80vh;
     background-size: cover;
-    display:flex;
+    display: flex;
     flex-direction: column;
     align-items: center;
     padding: 0 20px;
     text-align: center;
 }
 
-#showcase .ml3{
-    margin-top:80px;
+#showcase .ml3 {
+    margin-top: 80px;
     line-height: 1.2;
     font-weight: 900;
     font-size: 4em;
 }
 
-#showcase p{
+#showcase p {
     font-size: 25px;
 }
 
-#showcase .button, #contactForm .buttonTwo{
+#showcase .button, #contactForm .buttonTwo {
     font-size: 18px;
     text-decoration: none;
     color: white;
@@ -45,44 +45,44 @@ body {
 }
 
 
-#showcase .button:hover{
+#showcase .button:hover {
     background-color: black;
-    color:white;
+    color: white;
 }
 
-#showcase .button:focus{
+#showcase .button:focus {
     background-color: black;
-    color:white;
+    color: white;
 }
 
-div#contactForm .buttonTwo:hover{
-    background-color:black;
-    color:white;
+div#contactForm .buttonTwo:hover {
+    background-color: black;
+    color: white;
 }
 
-div#contactForm .buttonTwo:focus{
-    background-color:black;
-    color:white;
+div#contactForm .buttonTwo:focus {
+    background-color: black;
+    color: white;
 }
 
-#contactForm{
+#contactForm {
     text-align: center;
 }
 
-#contactForm p{
+#contactForm p {
     display: flex;
     justify-content: center;
 }
 
-div#contactForm{
+div#contactForm {
     height: 20vh;
     background-color: rgb(134, 131, 131, 0.7);
 }
 
-div#contactForm p{
+div#contactForm p {
     font-weight: bold;
     padding-top: 20px;
     margin-bottom: 20px;
     color: white;
-    font-size:25px;
+    font-size: 25px;
 }
