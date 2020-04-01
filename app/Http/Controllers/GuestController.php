@@ -30,9 +30,9 @@ class GuestController extends Controller
      * @param Request $request
      * @return Application|Factory|View
      */
-    // TODO: Use the category supplied from the view to filter the results of the search.
-    // TODO: Add DB seed with category: "All"
-    // TODO: If/else statement on category: IF category === "All" OR no category THEN search normally, ELSE filter by category chosen.
+    // TODO: If/else statement on category: IF no category THEN search normally, ELSE filter videos by chosen category.
+    // TODO: Update PHPDoc before making a pull-request.
+    // TODO: Check remaining TODO's, and remove before pull-request.
     public function indexVideo(Request $request)
     {
         $videos = [];
