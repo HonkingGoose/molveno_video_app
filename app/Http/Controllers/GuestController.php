@@ -47,16 +47,16 @@ class GuestController extends Controller
         $search = $request->query('search');
         $categoryId = $request->query('category_id');
 
-        $query = DB::table('videos');
+        $queryVideo = DB::table('videos');
 
         if ($search && is_null($categoryId)) {
-            $query->where('title', 'like', '%' . $search . '%');
-            $query->orWhere('description', 'like', '%' . $search . '%');
+            $queryVideo->where('title', 'like', '%' . $search . '%');
+            $queryVideo->orWhere('description', 'like', '%' . $search . '%');
         } else ($categoryId) {
-            $query->where('id', '%' . $categoryId . '%');
+            $queryVideo->where('id', '%' . $categoryId . '%');
         }
 
-        $videos = $query->get();
+        $videos = $queryVideo->get();
 
         $categories = Category::all();
         // TODO: optionally add sorting
