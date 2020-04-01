@@ -38,7 +38,5 @@ class SendContactFormEmail implements ShouldQueue
             $contactForm->sentToQueue = true;
             $contactForm->save();
         }
-        //$email = new ContactFormEmail(/*pass data*/ );
-        //Mail::to('admin@molveno.it')->send($email);
     }
 }
