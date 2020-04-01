@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use App\ContactForm;
 use Illuminate\Http\Response;
 use Illuminate\View\View;
+use App\Mail\ContactFormEmail;
+use Mail;
 
 class ContactFormController extends Controller
 {
@@ -43,6 +45,7 @@ class ContactFormController extends Controller
         $contact_form->message = $request->input('message');
 
         if ($contact_form->save()) {
+            Mail::to('admin@molveno.it')->send(new ContactFormEmail($contact_form));
             return view('contact.sentSuccessfully');
         } else {
             return view('contact.form');
