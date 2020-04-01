@@ -20,7 +20,7 @@
                 @endforeach
             </select>
             <button tabindex="3" class="btn btn-primary">Search</button>
-            <a class="btn btn-secondary" href="{{ route('guest.videoIndex') }}">Reset</a>
+            <a tabindex="4" class="btn btn-secondary" href="{{ route('guest.videoIndex') }}">Reset</a>
         </div>
     </form>
 </div>
