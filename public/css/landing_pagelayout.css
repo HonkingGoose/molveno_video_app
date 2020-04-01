@@ -50,7 +50,17 @@ body {
     color:white;
 }
 
+#showcase .button:focus{
+    background-color: black;
+    color:white;
+}
+
 div#contactForm .buttonTwo:hover{
+    background-color:black;
+    color:white;
+}
+
+div#contactForm .buttonTwo:focus{
     background-color:black;
     color:white;
 }
