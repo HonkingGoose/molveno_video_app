@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Guest;
 use App\Video;
 use App\Rating;
@@ -57,7 +58,7 @@ class GuestController extends Controller
 
         $videos = $query->get();
 
-        $categories = \App\Category::all();
+        $categories = Category::all();
         // TODO: optionally add sorting
 
         return view(
