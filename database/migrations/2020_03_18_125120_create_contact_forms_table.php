@@ -21,6 +21,7 @@ class CreateContactFormsTable extends Migration
             $table->unsignedInteger('roomNumber');
             $table->string('category');
             $table->text('message');
+            $table->boolean('sentToQueue')->default(false);
         });
     }
 
