@@ -108,8 +108,9 @@ class VideoController extends Controller
     {
         $roomNumber = $request->cookie('ROOM_NUMBER');
         if (!$roomNumber) {
-            return view('guest.room.set');
+            return redirect()->route('guest.room.set');
         }
+
         $guest = Guest::where('roomNumber', $roomNumber)->first();
         $rating = Rating::findByVideoIdAndUserHash(
             $video->id,
