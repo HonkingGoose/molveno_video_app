@@ -9,7 +9,7 @@
 </head>
 <body>
     <div id="showcase">
-        <h1 class="ml3">Welcome to the Molveno Lake Resort</h1>
+        <h1 class="ml3">Welcome to Molveno Lake Resort</h1>
         <a href="/guest/watch_video" class="button">Watch videos</a>
     </div>
     <div id="contactForm">
