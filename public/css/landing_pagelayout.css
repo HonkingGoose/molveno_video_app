@@ -45,22 +45,12 @@ body {
 }
 
 
-#showcase .button:hover {
+#showcase .button:hover, .button:focus {
     background-color: black;
     color: white;
 }
 
-#showcase .button:focus {
-    background-color: black;
-    color: white;
-}
-
-div#contactForm .buttonTwo:hover {
-    background-color: black;
-    color: white;
-}
-
-div#contactForm .buttonTwo:focus {
+div#contactForm .buttonTwo:hover, .buttonTwo:focus {
     background-color: black;
     color: white;
 }
