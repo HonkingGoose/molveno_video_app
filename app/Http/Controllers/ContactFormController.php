@@ -34,7 +34,7 @@ class ContactFormController extends Controller
         $request->validate([
             'firstName' => 'required|alpha',
             'lastName' => 'required|alpha',
-            'roomNumber'=> 'required|integer'
+            'roomNumber' => 'required|integer'
         ]);
 
         $contact_form = new ContactForm();
