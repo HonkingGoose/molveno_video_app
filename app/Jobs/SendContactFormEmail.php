@@ -9,6 +9,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Mail;
 use App\Mail\ContactFormEmail;
+use App\ContactForm;
 
 class SendContactFormEmail implements ShouldQueue
 {
@@ -31,7 +32,13 @@ class SendContactFormEmail implements ShouldQueue
      */
     public function handle()
     {
-        $email = new ContactFormEmail(/*pass data*/ );
-        Mail::to('admin@molveno.it')->send($email);
+        $contactForms = ContactForm::where('sentToQueue', false)->get();
+        foreach($contactForms as $contactForm){
+            Mail::to('admin@molveno.it')->send(new ContactFormEmail($contactForm)); 
+            $contactForm->sentToQueue = true;
+            $contactForm->save();
+        }
+        //$email = new ContactFormEmail(/*pass data*/ );
+        //Mail::to('admin@molveno.it')->send($email);
     }
 }
