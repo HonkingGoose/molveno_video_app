@@ -21,7 +21,7 @@ $factory->define(App\Video::class, function (Faker $faker) {
         'title' => $faker->sentence($nbWords = 5, $variableNbWords = true),
         'description' => $faker->sentence($nbWords = 10, $variableNbWords = true),
         'category_id' => $categories->random()->id,
-        'reviews' => $faker->numberBetween($min = 0, $max = 5),
+        // 'reviews' => $faker->numberBetween($min = 0, $max = 5),
         'available_to_watch' => $faker->numberBetween($min = 0, $max = 1),
         'suitable_for_kids' => $faker->numberBetween($min = 0, $max = 1),
         'created_by' => $faker->name
