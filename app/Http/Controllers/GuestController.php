@@ -70,6 +70,17 @@ class GuestController extends Controller
         );
     }
 
+    public function search(Request $request)
+    {
+        $search = $request->input('search', null);
+        $categoryId = $request->input('category_id', null);
+
+        return redirect()->route(
+            'guest.videoIndex',
+            ['search' => $search, 'category_id' => $categoryId]
+        );
+    }
+
     /**
      * Show the form for creating a new resource.
      *
