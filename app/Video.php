@@ -7,10 +7,6 @@ use Illuminate\Support\Facades\DB;
 
 class Video extends Model
 {
-    // default values
-    protected $attributes = [
-        'reviews' => 0,
-    ];
 
     public function ratings()
     {
