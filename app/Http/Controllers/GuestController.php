@@ -9,6 +9,7 @@ use App\Rating;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Cookie;
@@ -67,6 +68,23 @@ class GuestController extends Controller
         return view(
             'video.index',
             ['videos' => $videos, 'search' => $search, 'categoryId' => $categoryId, 'categories' => $categories, 'currentGuest' => $currentGuest]
+        );
+    }
+
+    /**
+     * This function takes the request, and forwards the search and category variables to the view.
+     *
+     * @param Request $request
+     * @return RedirectResponse
+     */
+    public function search(Request $request)
+    {
+        $search = $request->input('search', null);
+        $categoryId = $request->input('category_id', null);
+
+        return redirect()->route(
+            'guest.videoIndex',
+            ['search' => $search, 'category_id' => $categoryId]
         );
     }
 

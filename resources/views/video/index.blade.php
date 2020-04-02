@@ -8,7 +8,7 @@
 @endif
 
 <div class="d-flex justify-content-center">
-    <form>
+    <form method="post" action="{{ route('guest.search') }}">
         @csrf
         <div id="searchBox" class="form-row">
             <input class="form-control" placeholder="Search for your favorite video" autofocus tabindex="1"
