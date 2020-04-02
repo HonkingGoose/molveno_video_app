@@ -22,7 +22,6 @@
                             <th width="5%">Title</th>
                             <th width="5%">Description</th>
                             <th width="5%">Category</th>
-                            <th width="5%">Reviews</th>
                             <th width="5%">Video Available?</th>
                             <th width="5%">Suitable for Kids?</th>
                             <th width="5%">Created by</th>
