@@ -64,3 +64,14 @@ ul {
     background-color: green;
     color: white;
   }
+
+  .flex-container{
+      display: flex;
+      flex-direction: row;
+
+
+  }
+
+  .btn-add{
+    border-radius: 0%;
+}
