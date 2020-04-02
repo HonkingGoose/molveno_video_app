@@ -4,37 +4,37 @@
 @section('title', 'CRUD Category')
 
 @section('contentTwo')
-    <br>
-    <br>
-    <h2>Category list</h2>
+<br>
+<br>
+<h2>Category list</h2>
 
-    <div class="container">
-        <div class="row">
+<div class="container">
+    <div class="row">
             <div class="controls">
                 @foreach ($categories as $category)
-                    <div class="input-group">
-                        <div class="flex-container">
-                            <form method="POST" action="/admin/category/{{ $category->id }}/update">
-                                @csrf
-                                <div class="flex-container">
-                                    <input class="form-control" name="name" type="text" value="{{$category->name}}">
-                                    <button class="btn btn-primary btn-add">
-                                        <span class="glyphicon glyphicon-edit"></span>
-                                    </button>
-                                </div>
-                            </form>
-                            <form method="POST" action="/admin/category/{{ $category->id }}/delete">
-                                @csrf
-                                <input type="hidden" name="category_id" value="{{ $category->id}}">
-                                <div class="input-group-btn">
-                                    <input type="hidden" name="category_id" value="{{$category->id}}">
-                                    <button class="btn btn-danger btn-remove">
-                                        <span class="glyphicon glyphicon-remove"></span>
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
+                <div class="input-group">
+                    <div class="flex-container">
+                        <form method="POST" action="/admin/category/{{ $category->id }}/update">
+                            @csrf
+                            <div class="flex-container">
+                                <input class="form-control" name="name" type="text" value="{{$category->name}}">
+                                <button class="btn btn-primary btn-add">
+                                    <span class="glyphicon glyphicon-edit"></span>
+                                </button>
+                            </div>
+                        </form>
+                        <form method="POST" action="/admin/category/{{ $category->id }}/delete">
+                            @csrf
+                            <input type="hidden" name="category_id" value="{{ $category->id}}">
+                            <div class="input-group-btn">
+                                <input type="hidden" name="category_id" value="{{$category->id}}">
+                                <button class="btn btn-danger btn-remove">
+                                    <span class="glyphicon glyphicon-remove"></span>
+                                </button>
+                            </div>
+                        </form>
                     </div>
+                </div>
                 @endforeach
                 <div class="input-group">
                     <form method="POST" action="{{ route('category.store') }}">
@@ -48,7 +48,7 @@
                     </form>
                 </div>
             </div>
-        </div>
     </div>
+</div>
 
 @endsection
