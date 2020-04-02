@@ -1,13 +1,13 @@
 body {
 
     background-color: #343434;
-    color:white;
+    color: white;
     margin: 15px;
     font-family: 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 
 }
 
-.table>tbody>tr>td, .table>thead>tr>th {
+.table > tbody > tr > td, .table > thead > tr > th {
     background-color: #707070;
 }
 
@@ -15,7 +15,7 @@ body {
     color: black;
 }
 
-.whiteTextColor{
+.whiteTextColor {
     color: white;
 }
 
@@ -23,7 +23,7 @@ body {
     color: white;
 }
 
-.modal-body>h4 {
+.modal-body > h4 {
     color: black;
 }
 
@@ -33,45 +33,43 @@ ul {
     padding: 0;
     overflow: hidden;
     background-color: #707070;
-  }
+}
 
-  li {
+li {
     float: left;
-  }
+}
 
-  li a {
+li a {
     display: block;
     color: white;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-  }
+}
 
-  li a:hover {
+li a:hover {
     background-color: white;
-  }
+}
 
-  a:link{
+a:link {
     text-decoration: none;
-  }
+}
 
-  #middle, #middleTwo{
+#middle, #middleTwo {
     display: flex;
     justify-content: center;
-   }
+}
 
-   .active {
+.active {
     background-color: green;
     color: white;
-  }
+}
 
-  .flex-container{
-      display: flex;
-      flex-direction: row;
+.flex-container {
+    display: flex;
+    flex-direction: row;
+}
 
-
-  }
-
-  .btn-add{
+.btn-add {
     border-radius: 0%;
 }
