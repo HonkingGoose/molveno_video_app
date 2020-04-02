@@ -6,8 +6,6 @@
 
     @section('contentTwo')
         <div class="container-fluid">
-            <br />
-            <br />
             <div align="right">
                 <button type="button" name="create_record" id="create_record" class="btn btn-success btn-sm">Create Record</button>
             </div>
