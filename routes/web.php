@@ -36,6 +36,7 @@ Route::middleware('auth')->group(function () {
 Route::view('/', 'landing_page.guest');
 Route::prefix('guest')->group(function () {
     Route::get('watch_video', 'GuestController@indexVideo')->name('guest.videoIndex');
+    Route::post('watch_video/search', 'GuestController@search')->name('guest.search');
     Route::get('watch_video/{video}', 'VideoController@show')->name('watchVideo');
     Route::post('watch_video/{video}', 'GuestController@postRating');
     Route::get('contact','ContactFormController@index');
