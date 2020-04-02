@@ -4,8 +4,6 @@
 @section('title', 'CRUD Category')
 
 @section('contentTwo')
-<br>
-<br>
 <h2>Category list</h2>
 
 <div class="container">

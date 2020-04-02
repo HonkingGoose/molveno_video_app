@@ -73,3 +73,7 @@ a:link {
 .btn-add {
     border-radius: 0%;
 }
+
+.container{
+    margin: 0;
+}
