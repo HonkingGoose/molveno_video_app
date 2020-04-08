@@ -6,8 +6,6 @@
 
     @section('contentTwo')
         <div class="container-fluid">
-            <br />
-            <br />
             <div align="right">
                 <button type="button" name="create_record" id="create_record" class="btn btn-success btn-sm">Create Record</button>
             </div>
@@ -22,7 +20,6 @@
                             <th width="5%">Title</th>
                             <th width="5%">Description</th>
                             <th width="5%">Category</th>
-                            <th width="5%">Reviews</th>
                             <th width="5%">Video Available?</th>
                             <th width="5%">Suitable for Kids?</th>
                             <th width="5%">Created by</th>

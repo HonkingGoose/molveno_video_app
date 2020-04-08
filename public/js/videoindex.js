@@ -33,10 +33,6 @@ $(document).ready(function(){
         name: 'category'
         },
         {
-        data: 'reviews',
-        name: 'reviews'
-        },
-        {
         data: 'available_to_watch',
         name: 'available_to_watch'
         },

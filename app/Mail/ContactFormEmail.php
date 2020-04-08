@@ -18,6 +18,7 @@ class ContactFormEmail extends Mailable
      * Create a new message instance.
      *
      * @return void
+     * @param ContactForm $contactForm
      */
     public function __construct(ContactForm $contactForm)
     {

@@ -20,7 +20,6 @@ class CreateVideosTable extends Migration
             $table->string('title');
             $table->string('description');
             $table->string('category');
-            $table->smallInteger('reviews')->default(0);
             $table->boolean('available_to_watch');
             $table->boolean('suitable_for_kids');
             $table->string('created_by');

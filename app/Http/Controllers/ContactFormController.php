@@ -8,13 +8,15 @@ use Illuminate\Http\Request;
 use App\ContactForm;
 use Illuminate\Http\Response;
 use Illuminate\View\View;
+use App\Mail\ContactFormEmail;
+use Mail;
 
 class ContactFormController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return Response
+     * @return Application|Factory|View
      */
     public function index()
     {
@@ -32,7 +34,7 @@ class ContactFormController extends Controller
         $request->validate([
             'firstName' => 'required|alpha',
             'lastName' => 'required|alpha',
-            'roomNumber'=> 'required|integer'
+            'roomNumber' => 'required|integer'
         ]);
 
         $contact_form = new ContactForm();
@@ -43,6 +45,7 @@ class ContactFormController extends Controller
         $contact_form->message = $request->input('message');
 
         if ($contact_form->save()) {
+            Mail::to('admin@molveno.it')->send(new ContactFormEmail($contact_form));
             return view('contact.sentSuccessfully');
         } else {
             return view('contact.form');
