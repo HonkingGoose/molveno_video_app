@@ -1,5 +1,6 @@
 <?php
 
+use App\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -21,7 +22,7 @@ class AdminUserSeeder extends Seeder
             throw new Exception("Admin variables not provided");
         }
 
-        $admin = new \App\User();
+        $admin = new User();
         $admin->name = getenv('MOLVENO_ADMIN_USER');
         $admin->email = getenv('MOLVENO_ADMIN_EMAIL');
         $admin->password = Hash::make(getenv('MOLVENO_ADMIN_PASSWORD'));
