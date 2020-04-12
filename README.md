@@ -1,4 +1,5 @@
 [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=HonkingGoose/molveno_video_app)](https://dependabot.com)
+![Laravel](https://github.com/HonkingGoose/molveno_video_app/workflows/Laravel/badge.svg)
 
 # Molveno Lake Resort video app
 
