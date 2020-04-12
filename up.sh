@@ -6,15 +6,18 @@ if [[ ! -f .env ]]; then
   cp -v .env.example .env
   sed -i 's/DB_HOST=.*/DB_HOST=mysql-db/' .env
   sed -i 's/DB_DATABASE=.*/DB_DATABASE=molveno/' .env
-  sed -i 's/DB_USERNAME=.*/DB_USERNAME=molveno/' .env
-  sed -i 's/DB_PASSWORD=.*/DB_PASSWORD=molveno/' .env
+  sed -i 's/DB_USERNAME=.*/DB_USERNAME=changemewhenyoureadthisplease/' .env
+  sed -i 's/DB_PASSWORD=.*/DB_PASSWORD=changemewhenyoureadthisplease/' .env
   echo -e "UID=${UID}" >> .env
 fi
 
-echo -e "\nSTEP: cleaning up previous database data directory"
+echo -e "\nSTEP: clean up previous database data directory"
 sudo rm -rfv "run/var/*"
 
-echo -e "\nSTEP: cleaning up previous docker-compose containers"
+echo -e "\nSTEP: clean up previous database data directory (without sudo for Git Bash windows)"
+rm -rfv "run/var/*"
+
+echo -e "\nSTEP: clean up previous docker-compose containers"
 docker-compose down
 
 echo -e "\nSTEP: docker-compose build/up"
@@ -27,7 +30,7 @@ echo -e "\nSTEP: execute artisan key:generate"
 docker exec laravel-app bash -c "php artisan key:generate"
 
 # sleep for 5 seconds before seeding the database
-echo -e "\nsleeping for 5 seconds"
+echo -e "\nSTEP: sleep for 5 seconds"
 sleep 5
 
 echo -e "\nSTEP: execute artisan migrate:fresh and seed the database"
