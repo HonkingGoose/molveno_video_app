@@ -2,12 +2,16 @@ version: 1
 update_configs:
   - package_manager: "php:composer"
     directory: "/"
-    update_schedule: "monthly"
+    update_schedule: "live"
+    automerged_updates:
+      - match:
+          dependency_type: "all"
+          update_type: "all"
 
   - package_manager: "javascript"
     directory: "/"
-    update_schedule: "monthly"
-    
+    update_schedule: "live"
+
   - package_manager: "docker"
     directory: "/"
-    update_schedule: "monthly"
+    update_schedule: "daily"
