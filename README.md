@@ -6,6 +6,11 @@
 This app uses the Laravel framework.
 You do not need to have Laravel installed globally.
 
+## Repo status
+
+This repository is in archived mode.
+This project will not receive any more bugfixes/security updates/features.
+
 ## About using Docker with this repository:
 
 You can use the `up.sh` shell script to create the docker container.
